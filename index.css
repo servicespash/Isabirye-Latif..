@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Broadband Engine: Light Mode */
+    /* Absolute White Background, Deep Navy Text, Rich Gold Accents */
+    --bg-primary: #ffffff;
+    --text-primary: #1e3a8a;
+    --accent-primary: #d97706;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(30, 58, 138, 0.15);
+  }
+
+  .dark {
+    /* Broadband Engine: Dark Mode */
+    /* Deep Slate Background, Crisp White Text, Shiny Yellow Gold Accents */
+    --bg-primary: #020617;
+    --text-primary: #f8fafc;
+    --accent-primary: #fde047;
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    @apply antialiased;
+  }
+
+  /* Ensure all headings and text components obey the variables */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    transition: color 0.4s ease;
+    @apply font-mono font-black uppercase;
+  }
+
+  p {
+    color: var(--text-primary);
+    transition: color 0.4s ease;
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  /* Kinetic Rail Container */
+  .kinetic-rail-border {
+    @apply fixed top-0 left-0 w-full h-16 z-50 p-[2px] overflow-hidden;
+    background: conic-gradient(from 0deg, #22d3ee, #a855f7, #3b82f6, #22d3ee);
+    animation: rotate-border 3s linear infinite;
+  }
+  
+  .kinetic-rail-inner {
+    @apply w-full h-full bg-[var(--bg-primary)] flex items-center justify-between px-6;
+  }
+
+  /* Glass Platform - Theme-aware styling */
+  .glass-card {
+    @apply backdrop-blur-[16px] border border-[var(--border-color)] bg-[var(--glass-bg)] transition-all duration-400;
+  }
+
+  /* Manifesto Pulse Banner */
+  .pulse-banner {
+    @apply fixed top-16 w-full z-40 bg-[var(--glass-bg)] backdrop-blur-md py-2 text-center text-[10px] uppercase tracking-widest text-[var(--text-primary)]/80 animate-pulse border-b border-[var(--border-color)];
+  }
+}
+
+@keyframes rotate-border {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
