@@ -10,7 +10,7 @@ export const SpatialCommandSurface: React.FC<SpatialCommandSurfaceProps> = ({ is
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[200] w-screen h-screen bg-[var(--color-bg-primary)]/98 backdrop-blur-3xl p-6 md:p-16 flex flex-col justify-between pointer-events-auto overflow-y-auto transition-all duration-500">
+    <div className="fixed inset-0 z-[1000] w-screen h-screen bg-[var(--color-bg-primary)]/98 backdrop-blur-3xl p-6 md:p-16 flex flex-col justify-between pointer-events-auto overflow-y-auto transition-all duration-500">
       
       {/* 1. MASTER SURFACE CONTROL BAR */}
       <div className="flex justify-between items-center w-full max-w-7xl mx-auto border-b border-[var(--color-border)] pb-6">

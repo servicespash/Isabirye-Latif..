@@ -2,11 +2,11 @@
 
 /* 1. INDUSTRIAL RESET */
 :root {
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8fafc;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #334155;
-  --color-accent: #0284c7;
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #020617;
+  --color-text-secondary: #475569;
+  --color-accent: #0055ff; /* Pro-grade Electric Blue */
   --color-border: #cbd5e1;
   --color-glass: rgba(255, 255, 255, 0.7);
 }
@@ -25,13 +25,13 @@ html, body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 18px; /* Increased base size */
+  font-size: 14px; /* Reduced from 18px */
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   scroll-behavior: smooth;
   transition: background-color 0.4s ease, color 0.4s ease;
-  letter-spacing: -0.01em; /* Sharper */
+  letter-spacing: -0.01em;
 }
 
 /* 2. THE KINETIC ARCHITECTURE (RAIL GLOW) */

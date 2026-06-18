@@ -36,36 +36,37 @@ export const Navbar = () => {
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
-      {/* CONTAINER: Managed by parent */}
-      <div className="flex flex-col items-center gap-4 w-full px-4 md:px-8 pointer-events-none">
-        
+      {/* CONTAINER: Flowing naturally within the flex layout */}
+      <div className="flex flex-col items-center gap-2 w-full px-2 md:px-8 pointer-events-none mt-4">
+
         {/* MASTER COMMAND RAIL */}
-        <nav className="kinetic-rail-thick w-full max-w-7xl backdrop-blur-3xl bg-[var(--color-bg-primary)]/60 px-6 py-4 flex justify-between items-center transition-all duration-500 pointer-events-auto rounded-full shadow-2xl mt-6">
-          
+        <nav className="kinetic-rail-thick w-full max-w-7xl backdrop-blur-3xl bg-[var(--color-bg-primary)]/60 px-4 py-3 flex justify-between items-center transition-all duration-500 pointer-events-auto rounded-full shadow-2xl">
+
           {/* BRANDING LOGIC */}
-          <Link to="/" className="flex items-center gap-3 shrink-0 max-w-[55%] md:max-w-[65%] overflow-hidden relative group">
-            <div className="shrink-0 scale-95 md:scale-105">
+          <Link to="/" className="flex items-center gap-2 shrink-0 max-w-[40%] md:max-w-[65%] overflow-hidden relative group">
+            <div className="shrink-0 scale-90">
               <BrandLogo />
             </div>
-            
-            <div className="flex-1 overflow-x-auto whitespace-nowrap no-scrollbar flex items-center">
-              <span className="text-[10px] md:text-[12px] font-bold tracking-[0.25em] uppercase text-[var(--color-text-primary)] group-hover:text-[#00f2fe] transition-colors duration-300">
-                Architect_Node // Cymatic_Hub // Cymatic_Resonance
+
+            <div className="hidden md:flex flex-1 overflow-x-auto whitespace-nowrap no-scrollbar items-center">
+              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[var(--color-text-primary)] group-hover:text-[#00f2fe] transition-colors duration-300">
+                Architect_Node // Cymatic_Hub
               </span>
             </div>
           </Link>
 
           {/* CONTROLS */}
-          <div className="flex gap-4 md:gap-8 items-center shrink-0">
+          <div className="flex gap-2 md:gap-8 items-center shrink-0">
             <ThemeToggle />
             <button 
               onClick={() => setIsOpen(!isOpen)}
               className="text-[10px] md:text-[12px] font-bold uppercase tracking-[0.25em] text-[var(--color-text-primary)] hover:text-[#00f2fe] transition-all duration-300 shrink-0"
             >
-              {isOpen ? '//_CLOSE_EXPLORE' : '//_EXPLORE'}
+              //_EXPLORE
             </button>
           </div>
         </nav>
+
 
         {/* CYLINDRICAL KINETIC BUTTON: READ MANIFESTO */}
         <Link 

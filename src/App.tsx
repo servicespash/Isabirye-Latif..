@@ -10,7 +10,7 @@ import { useFluidGridManager } from './engine/FluidGridManager';
 import Home from './pages/Home';
 import { Manifesto } from './pages/Manifesto';
 import { Projects } from './pages/Projects';
-import { Creative } from './pages/Creative';
+import Creative from './pages/Creative';
 import { Creatives } from './pages/Creatives';
 import { Hub } from './pages/Hub';
 import { Learning } from './pages/Learning';

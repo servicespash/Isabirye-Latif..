@@ -4,8 +4,8 @@ import { HubPortal } from '../components/HubPortal';
 export const Hub = () => {
   return (
     <CymaticLayout>
-      <div className="py-8">
-        <h1 className="text-4xl font-black uppercase tracking-tighter mb-12">// CYMATIC_HUB: OPERATIONAL_DASHBOARD</h1>
+      <div className="w-full">
+        <h1 className="text-3xl font-black uppercase tracking-tighter mb-8">// CYMATIC_HUB: OPERATIONAL_DASHBOARD</h1>
         <HubPortal />
       </div>
     </CymaticLayout>

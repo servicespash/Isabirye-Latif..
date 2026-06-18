@@ -24,5 +24,17 @@ export const useHubService = () => {
     }
   };
 
-  return { projects, chatMessages, sendMessage };
+  const submitProject = (projectId: string) => {
+    setProjects(prev => prev.map(p => 
+      p.id === projectId ? { ...p, status: 'pending' as const } : p
+    ));
+    // Simulate teacher marking after 3 seconds
+    setTimeout(() => {
+      setProjects(prev => prev.map(p => 
+        p.id === projectId ? { ...p, status: 'marked' as const, grade: 85 } : p
+      ));
+    }, 3000);
+  };
+
+  return { projects, chatMessages, sendMessage, submitProject };
 };

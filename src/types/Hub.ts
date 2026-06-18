@@ -8,6 +8,8 @@ export interface Project {
   classLevel: ClassLevel;
   description: string;
   deadline: string;
+  status?: 'pending' | 'marked';
+  grade?: number;
 }
 
 export interface Submission {
