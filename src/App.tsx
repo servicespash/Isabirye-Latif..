@@ -12,6 +12,7 @@ import { Manifesto } from './pages/Manifesto';
 import { Projects } from './pages/Projects';
 import { Creative } from './pages/Creative';
 import { Creatives } from './pages/Creatives';
+import { Hub } from './pages/Hub';
 import { Learning } from './pages/Learning';
 import { ComplianceProtocol } from './pages/ComplianceProtocol';
 import { Transparency } from './pages/Transparency';
@@ -45,8 +46,8 @@ export const App: React.FC = () => {
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/creative" element={<Creative />} />
                 <Route path="/creatives" element={<Creatives />} />
+                <Route path="/hub" element={<Hub />} />
                 <Route path="/learning" element={<Learning />} />
-
                 <Route path="/legal" element={<ComplianceProtocol />} />
                 <Route path="/transparency" element={<Transparency />} />
                 <Route path="/stack" element={<StackAudit />} />

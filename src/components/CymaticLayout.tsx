@@ -26,13 +26,14 @@ const UIFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* FLUID EDITORIAL CONTAINER */}
       <main className="w-full pt-40 pb-32 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto bg-[var(--color-bg-secondary)]/10 backdrop-blur-xl border border-[var(--color-border)] rounded-3xl p-6 md:p-12 shadow-2xl">
+        <div className="max-w-7xl mx-auto w-full bg-[var(--color-bg-secondary)]/10 backdrop-blur-xl border border-[var(--color-border)] rounded-3xl p-6 md:p-12 shadow-2xl">
           <div className="w-full tracking-normal antialiased">
             {children}
             <CymaticFooter />
           </div>
         </div>
       </main>
+
 
           </div>
           );

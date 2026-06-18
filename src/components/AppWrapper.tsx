@@ -6,8 +6,10 @@ export const AppWrapper: React.FC<{ children: React.ReactNode }> = ({ children }
   return (
     <ErrorBoundary>
       <div className="flex min-h-screen w-full">
-        <RepoRail />
-        <div className="flex-1 w-full min-w-0">
+        <div className="shrink-0">
+            <RepoRail />
+        </div>
+        <div className="flex-1 w-full">
           {children}
         </div>
       </div>
