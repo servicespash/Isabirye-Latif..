@@ -1,64 +1,65 @@
 import { motion } from 'framer-motion';
 import { CymaticLayout } from '../components/CymaticLayout';
-import { GatewayCard } from '../components/GatewayCard';
 import { SystemHeartbeat } from '../components/SystemHeartbeat';
 
 export default function Home() {
   return (
     <CymaticLayout>
-      <div className="space-y-12">
+      <div className="max-w-6xl mx-auto px-6 space-y-24 py-12">
         
-        {/* HERO: COMMAND CENTER */}
-        <section className="text-center py-10 space-y-4">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-mono text-[var(--color-accent)] text-[8px] tracking-[0.2em] uppercase">
-            // STATUS: ARCHITECTURAL_GENESIS_ACTIVE
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-            className="font-serif text-3xl md:text-4xl font-bold tracking-tighter text-[var(--color-text-primary)] leading-[1.1]"
-          >
-            Cymatic Evolution<br/>
-            <span className="text-[var(--color-text-secondary)] italic">Command Center.</span>
-          </motion.h1>
-          <p className="font-sans text-xs text-[var(--color-text-secondary)] max-w-lg mx-auto leading-relaxed">
-            I am Isabirye Latif. I build systems where education meets execution. This is the command center for the architecture of resilience.
-          </p>
-        </section>
-
-        {/* GATEWAY GRID */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <GatewayCard 
-            title="Cymatic Hub"
-            narrative="Student potential nexus."
-            functionality="PBL tracking, AI-tutoring."
-            intent="Resonant truth."
-            path="/hub"
-            actionText="Access Hub"
-          />
-          <GatewayCard 
-            title="Resonance"
-            narrative="Institutional heartbeat."
-            functionality="Live attendance, real-time sync."
-            intent="Operational transparency."
-            path="/projects"
-            actionText="View Resonance"
-          />
-          <GatewayCard 
-            title="Creatives"
-            narrative="Digital output, raw."
-            functionality="Sonic, media, brutalist photo."
-            intent="Architectural conviction."
-            path="/creatives"
-            actionText="Enter Lab"
-          />
-        </section>
-
-        {/* THE HEARTBEAT */}
-        <section className="space-y-4 py-10">
-          <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-2">
-            <h3 className="font-mono text-[9px] uppercase tracking-widest">// System_Telemetry</h3>
-            <span className="text-[var(--color-accent)] text-[8px] animate-pulse">● LIVE_OPERATIONAL</span>
+        {/* HERO: THE ARCHITECT'S MANIFESTO */}
+        <section className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-mono text-[var(--color-accent)] text-[10px] tracking-[0.4em] uppercase">
+              // SOLO_ARCHITECT_IDENTITY_VERIFIED
+            </motion.div>
+            <h1 className="font-serif text-6xl font-bold tracking-tighter leading-[0.9]">
+              Isabirye Latif<br/>
+              <span className="italic text-[var(--color-text-secondary)]">Architect of Resonance.</span>
+            </h1>
+            <p className="font-sans text-sm text-[var(--color-text-secondary)] leading-relaxed border-l border-[var(--color-accent)] pl-6">
+              I do not just build systems; I orchestrate the future. Through Cymatic Hub and Resonance, I provide the rigid structure needed to bind institutional effort into a unified, resonant frequency. My work is not just code—it is the digital embodiment of a synchronized, intentional society. It's just the beginning. "MY MANIFESTO"
+            </p>
           </div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            animate={{ opacity: 1, scale: 1 }}
+            className="border border-[var(--color-border)] p-2 shadow-2xl"
+          >
+            <img src="/media/photo1.png" alt="Isabirye Latif - Solo Architect" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
+          </motion.div>
+        </section>
+
+        {/* INSTITUTIONAL NODES */}
+        <section className="space-y-24">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+             <div className="order-2 md:order-1 border border-[var(--color-border)]">
+                <img src="/cymatic-hub-preview.png" alt="Cymatic Hub Interface" className="w-full h-auto" />
+             </div>
+             <div className="space-y-6 order-1 md:order-2">
+                <h3 className="text-4xl font-serif font-bold tracking-tight">Cymatic Hub</h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  The institutional register and synchronization engine. Students and teachers align here through PBL tracking, AI-tutored study guides, and real-time educational charts.
+                </p>
+                <a href="/hub" className="inline-block px-6 py-3 border border-[var(--color-accent)] text-[10px] font-mono uppercase hover:bg-[var(--color-accent)] hover:text-black transition-all">// Access Hub Nexus</a>
+             </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+             <div className="space-y-6">
+                <h3 className="text-4xl font-serif font-bold tracking-tight">Cymatic Resonance</h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  The institutional heartbeat. Precision-engineered for elite teams. Live attendance, total clarity, and meeting orchestration for executions that demand perfection.
+                </p>
+                <a href="/projects" className="inline-block px-6 py-3 border border-[var(--color-accent)] text-[10px] font-mono uppercase hover:bg-[var(--color-accent)] hover:text-black transition-all">// View Resonance Pulse</a>
+             </div>
+             <div className="border border-[var(--color-border)]">
+                <img src="/cymatic-resonance-preview.png" alt="Cymatic Resonance System" className="w-full h-auto" />
+             </div>
+          </div>
+        </section>
+
+        <section className="border-t border-[var(--color-border)] pt-20">
           <SystemHeartbeat />
         </section>
       </div>
