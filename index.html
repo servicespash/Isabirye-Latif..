@@ -2,6 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Gracefully handle environments (like sandboxed iframes or test runners) where third-party scripts or extensions
+      // attempt to override window.fetch, preventing crashes due to read-only getters.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var currentFetch = originalFetch;
+          
+          // Try defining a setter on Window.prototype to intercept assignments to fetch
+          if (Window.prototype && !Object.getOwnPropertyDescriptor(Window.prototype, 'fetch')?.set) {
+            Object.defineProperty(Window.prototype, 'fetch', {
+              get: function() {
+                return currentFetch;
+              },
+              set: function(val) {
+                currentFetch = val || originalFetch;
+              },
+              configurable: true,
+              enumerable: true
+            });
+          } else {
+            // Fallback: try on window directly
+            var desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+            if (desc && desc.configurable) {
+              Object.defineProperty(window, 'fetch', {
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val || originalFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          }
+        } catch (e) {
+          console.warn("Window fetch interception guard active", e);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cymatic Study | Institutional Sovereign Infrastructure</title>
     <link rel="manifest" href="/manifest.json" />

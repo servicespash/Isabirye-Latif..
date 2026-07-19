@@ -45,6 +45,30 @@
         "timestamp": { "type": "string" }
       },
       "required": ["appType", "version", "timestamp"]
+    },
+    "compliance": {
+      "title": "Compliance Metrics",
+      "description": "System compliance auditing metrics",
+      "type": "object",
+      "properties": {
+        "accessibility": { "type": "number" },
+        "security": { "type": "number" },
+        "transparency": { "type": "number" },
+        "lastAudit": { "type": "string" }
+      },
+      "required": ["accessibility", "security", "transparency", "lastAudit"]
+    },
+    "interaction": {
+      "title": "User Interaction Log",
+      "description": "Logged interactive element actions",
+      "type": "object",
+      "properties": {
+        "elementId": { "type": "string" },
+        "action": { "type": "string" },
+        "count": { "type": "number" },
+        "lastUpdated": { "type": "string" }
+      },
+      "required": ["elementId", "action", "count", "lastUpdated"]
     }
   },
   "firestore": {
@@ -63,6 +87,14 @@
     "/downloads/{downloadId}": {
       "schema": "downloadLog",
       "description": "Log of application downloads"
+    },
+    "/compliance/{complianceId}": {
+      "schema": "compliance",
+      "description": "Accessibility, security and transparency compliance scores"
+    },
+    "/interactions/{interactionId}": {
+      "schema": "interaction",
+      "description": "Interactions tracking logs"
     }
   }
 }

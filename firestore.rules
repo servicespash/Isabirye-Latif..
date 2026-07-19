@@ -48,6 +48,26 @@ service cloud.firestore {
              data.timestamp is string;
     }
 
+    // Helper: Validate Compliance
+    function isValidCompliance(data) {
+      return data.keys().hasAll(['accessibility', 'security', 'transparency', 'lastAudit']) &&
+             data.keys().size() == 4 &&
+             data.accessibility is number && data.accessibility >= 0 && data.accessibility <= 100 &&
+             data.security is number && data.security >= 0 && data.security <= 100 &&
+             data.transparency is number && data.transparency >= 0 && data.transparency <= 100 &&
+             data.lastAudit is string;
+    }
+
+    // Helper: Validate Interaction
+    function isValidInteraction(data) {
+      return data.keys().hasAll(['elementId', 'action', 'count', 'lastUpdated']) &&
+             data.keys().size() == 4 &&
+             data.elementId is string && data.elementId.size() > 0 && data.elementId.size() <= 200 &&
+             data.action is string && data.action.size() > 0 && data.action.size() <= 100 &&
+             data.count is number && data.count >= 0 &&
+             data.lastUpdated is string;
+    }
+
     // Site Stats Collection
     match /siteStats/{statId} {
       allow read: if true;
@@ -70,6 +90,18 @@ service cloud.firestore {
     match /downloads/{downloadId} {
       allow read: if true;
       allow create: if isValidId(downloadId) && isValidDownload(request.resource.data);
+    }
+
+    // Compliance Collection
+    match /compliance/{complianceId} {
+      allow read: if true;
+      allow write: if isValidId(complianceId) && isValidCompliance(request.resource.data);
+    }
+
+    // Interactions Collection
+    match /interactions/{interactionId} {
+      allow read: if true;
+      allow write, create, update: if isValidId(interactionId) && isValidInteraction(request.resource.data);
     }
   }
 }
