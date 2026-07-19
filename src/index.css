@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* 1. INDUSTRIAL RESET */
+:root {
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #020617;
+  --color-text-secondary: #1e293b;
+  --color-accent: #0055ff; /* Pro-grade Electric Blue */
+  --color-accent-rgb: 0, 85, 255;
+  --color-border: #cbd5e1;
+  --color-glass: rgba(255, 255, 255, 0.7);
+
+  /* Fallback legacy mappings for cross-compatibility */
+  --bg-primary: var(--color-bg-primary);
+  --text-primary: var(--color-text-primary);
+  --accent-primary: var(--color-accent);
+  --border-color: var(--color-border);
+  --glass-bg: var(--color-glass);
+}
+
+.dark {
+  --color-bg-primary: #050505;
+  --color-bg-secondary: #0c0c0e;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e2e8f0;
+  --color-accent: #22d3ee;
+  --color-accent-rgb: 34, 211, 238;
+  --color-border: #1a1a1a;
+  --color-glass: rgba(255, 255, 255, 0.05);
+
+  /* Fallback legacy mappings for cross-compatibility */
+  --bg-primary: var(--color-bg-primary);
+  --text-primary: var(--color-text-primary);
+  --accent-primary: var(--color-accent);
+  --border-color: var(--color-border);
+  --glass-bg: var(--color-glass);
+}
+
+html, body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px; 
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  letter-spacing: -0.011em;
+  line-height: 1.6;
+}
+
+.dark body {
+  background: radial-gradient(circle at 50% 0%, #121212, #050505);
+}
+.kinetic-rail {
+  position: relative;
+  border-radius: 9999px;
+  /* Use transparent border for the glow box-sizing */
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: linear-gradient(var(--color-bg-primary), var(--color-bg-primary)), 
+                    linear-gradient(90deg, var(--color-accent), #3b82f6, var(--color-accent));
+  background-size: 200% 100%;
+  animation: loop-glow 5s linear infinite; /* Slowed down to be "human speed" */
+}
+
+@keyframes loop-glow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* 3. INSTITUTIONAL GLASS ARCHITECTURE */
+.glass-card {
+  background: var(--color-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  transition: border 0.3s ease-in-out;
+}
+
+.glass-card:hover {
+  border-color: var(--color-accent);
+}
+
+/* 4. PRECISION DATA-SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
+::-webkit-scrollbar-thumb { 
+  background: var(--color-border); 
+  border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+@media print {
+  /* 1. UNIVERSAL STYLE OVERRIDES TO STRIP ALL GRAVITY AND COLOR NOISE */
+  * {
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: none !important;
+  }
+
+  /* 2. RE-ESTABLISH PURE WHITE CANVAS AND NATURAL FLOW INSTEAD OF SCREEN CONTAINMENT */
+  html, body, #root, 
+  .h-screen, .w-full, 
+  [class*="h-screen"], 
+  [class*="overflow-y-auto"], 
+  [class*="overflow-x-hidden"], 
+  .overflow-hidden {
+    height: auto !important;
+    min-height: initial !important;
+    overflow: visible !important;
+    position: static !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 3. ABSOLUTE DISMISSAL OF ALL INTERACTIVE, DECORATIVE, AND FLOATING OVERLAYS */
+  nav,
+  header,
+  footer,
+  aside,
+  button,
+  form,
+  input,
+  select,
+  textarea,
+  .print-hidden,
+  .kinetic-rail-thick,
+  .kinetic-rail,
+  .custom-cursor,
+  .scroll-progress,
+  .theme-toggle,
+  .resonance-toggle,
+  .floating-widget,
+  .sensory-layer,
+  .canvas-container,
+  [role="dialog"],
+  .inquiry-modal,
+  .command-palette,
+  #theme-debug-control,
+  #tsparticles,
+  #sovereign-inquiry-fab,
+  #hotkey-status-hint,
+  #sovereign-print-trigger,
+  .sticky {
+    display: none !important;
+  }
+
+  /* 4. SEAMLESS VERTICAL BLOCK FLOW FOR NATURAL PAGE BREAKS */
+  main {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Target main container card to remove background box constraints */
+  main > div {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* 5. PHYSICAL IMAGE OPTIMIZATIONS FOR INK AND SCALABILITY */
+  img {
+    max-height: 3.5in !important;
+    width: auto !important;
+    margin: 1.5em auto !important;
+    display: block !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border-radius: 4px !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  /* 6. TYPOGRAPHY & TEXT CONTRAST FOR PHYSICAL COPIES */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    margin-top: 1.5em !important;
+    margin-bottom: 0.5em !important;
+    font-weight: bold !important;
+    font-family: "Space Grotesk", "Inter", sans-serif !important;
+  }
+
+  h1 { font-size: 24pt !important; border-bottom: 2px solid #111111 !important; padding-bottom: 0.3em !important; }
+  h2 { font-size: 18pt !important; border-bottom: 1px solid #cccccc !important; padding-bottom: 0.2em !important; }
+  h3 { font-size: 13pt !important; }
+  h4 { font-size: 11pt !important; }
+
+  p, span, li, td, th {
+    color: #111111 !important;
+    font-size: 10.5pt !important;
+    font-family: "Inter", sans-serif !important;
+  }
+
+  code, pre, kbd {
+    font-family: "JetBrains Mono", monospace !important;
+    font-size: 9.5pt !important;
+    background-color: #f1f5f9 !important;
+    padding: 0.1em 0.3em !important;
+    border-radius: 3px !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  /* 7. CLASSIC DOCUMENT CARD STRIPPING WITH SEAMLESS BORDERS */
+  .glass-card, 
+  .card,
+  [class*="glass-card"] {
+    background: transparent !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    margin-bottom: 1.5em !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border-radius: 6px !important;
+    padding: 1.25em !important;
+    display: block !important;
+    color: #000000 !important;
+  }
+
+  /* 8. RIGID LIST AND SECTION BREAKING POLICIES */
+  section, article, .project-card, [id^="project-"] {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 2em !important;
+  }
+
+  tr, li {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  /* Forced break utilities */
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: always !important;
+  }
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: always !important;
+  }
+
+  /* 9. RE-RENDER CHOSEN RELEVANT LINKS */
+  main a[href^="http"]:after {
+    content: " (" attr(href) ")" !important;
+    font-size: 8.5pt !important;
+    color: #555555 !important;
+    font-family: "JetBrains Mono", monospace !important;
+  }
+
+  main a[href^="/"]:after {
+    content: " (https://cymatichub.xyz" attr(href) ")" !important;
+    font-size: 8.5pt !important;
+    color: #555555 !important;
+    font-family: "JetBrains Mono", monospace !important;
+  }
+
+  /* 10. PRINT-ONLY FOOTER AND CONTACT BRIDGE */
+  .print-footer {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4em !important;
+    padding: 1.5em 0 !important;
+    border-top: 2px solid #000000 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .print-footer-info p {
+    margin: 0 !important;
+    padding: 0.2em 0 !important;
+    font-size: 10pt !important;
+    font-weight: 500 !important;
+  }
+  .print-qr-code {
+    width: 80px !important;
+    height: 80px !important;
+    border: none !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+}
+
+.print-footer {
+  display: none;
+}

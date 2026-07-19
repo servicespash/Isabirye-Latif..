@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Master Gate: Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper: Validate ID
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_-]+$');
+    }
+
+    // Helper: Validate Stats
+    function isValidStats(data) {
+      return data.keys().size() <= 3 &&
+             (data.visitors == null || (data.visitors is number && data.visitors >= 0)) &&
+             (data.views == null || (data.views is number && data.views >= 0)) &&
+             (data.downloads == null || (data.downloads is number && data.downloads >= 0));
+    }
+
+    // Helper: Validate Sovereign Inquiry
+    function isValidInquiry(data) {
+      return data.keys().hasAll(['name', 'email', 'category', 'message', 'createdAt']) &&
+             data.keys().size() == 5 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.email is string && data.email.size() > 0 && data.email.size() <= 150 &&
+             data.category is string && data.category.size() > 0 && data.category.size() <= 50 &&
+             data.message is string && data.message.size() > 0 && data.message.size() <= 2000 &&
+             data.createdAt is string && data.createdAt.size() > 0 && data.createdAt.size() <= 100;
+    }
+
+    // Helper: Validate Project Metrics
+    function isValidProjectMetrics(data) {
+      return data.keys().hasAll(['projectId', 'linesOfCode', 'timeInvestedHours']) &&
+             data.keys().size() == 3 &&
+             data.projectId is string && data.projectId.size() > 0 && data.projectId.size() <= 128 &&
+             data.linesOfCode is number && data.linesOfCode >= 0 &&
+             data.timeInvestedHours is number && data.timeInvestedHours >= 0;
+    }
+
+    // Helper: Validate Download
+    function isValidDownload(data) {
+      return data.keys().hasAll(['appType', 'version', 'timestamp']) &&
+             data.keys().size() == 3 &&
+             data.appType in ['study', 'resonance'] &&
+             data.version is string && data.version.size() > 0 &&
+             data.timestamp is string;
+    }
+
+    // Site Stats Collection
+    match /siteStats/{statId} {
+      allow read: if true;
+      allow write: if isValidId(statId);
+    }
+
+    // Sovereign Inquiries Collection
+    match /inquiries/{inquiryId} {
+      allow create: if isValidId(inquiryId) && isValidInquiry(request.resource.data);
+      allow read: if false; // Secure write-only box for sovereign privacy
+    }
+
+    // Project Metrics Collection
+    match /projectMetrics/{projectId} {
+      allow read: if true;
+      allow write: if isValidId(projectId) && isValidProjectMetrics(request.resource.data);
+    }
+
+    // Downloads Collection
+    match /downloads/{downloadId} {
+      allow read: if true;
+      allow create: if isValidId(downloadId) && isValidDownload(request.resource.data);
+    }
+  }
+}

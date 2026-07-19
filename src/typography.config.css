@@ -1,0 +1,8 @@
+/* Genesis Typography Config */
+:root {
+  /* Locked clamp functions for stable, responsive typography */
+  --font-h1: clamp(2rem, 5vw, 4rem);
+  --font-h2: clamp(1.5rem, 3vw, 2.5rem);
+  --font-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --font-p: clamp(1rem, 1vw, 1.125rem);
+}

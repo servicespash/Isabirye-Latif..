@@ -1,0 +1,62 @@
+[
+  {
+    "id": "template1",
+    "title": "Aether Academy",
+    "category": "Education",
+    "purpose": "A premium academic layout for prep schools and universities.",
+    "description": "Designed for higher education institutions, featuring clean typography and a professional blue/slate color palette.",
+    "path": "/showcase/template1/index.html",
+    "image": "/showcase/template1/preview.jpg",
+    "phase": "Deployed",
+    "metrics": {
+      "performance": 99,
+      "accessibility": 100,
+      "seo": 100
+    }
+  },
+  {
+    "id": "template2",
+    "title": "Apex Venture",
+    "category": "Corporate",
+    "purpose": "A sleek, high-conversion advisory and strategy consulting interface.",
+    "description": "A high-performance corporate landing page for consultancies and financial advisors focusing on trust and clarity.",
+    "path": "/showcase/template2/index.html",
+    "image": "/showcase/template2/preview.jpg",
+    "phase": "Design",
+    "metrics": {
+      "performance": 100,
+      "accessibility": 100,
+      "seo": 100
+    }
+  },
+  {
+    "id": "template3",
+    "title": "Sora Studio",
+    "category": "Creative",
+    "purpose": "A minimalist portfolio showcasing spatial and digital architectural work.",
+    "description": "An ultra-minimalist template tailored for designers, studios, and creatives looking for a modern exhibition space.",
+    "path": "/showcase/template3/index.html",
+    "image": "/showcase/template3/preview.jpg",
+    "phase": "Research",
+    "metrics": {
+      "performance": 98,
+      "accessibility": 99,
+      "seo": 100
+    }
+  },
+  {
+    "id": "template4",
+    "title": "Hope Rise",
+    "category": "Non-profit",
+    "purpose": "A modern charity template focused on transparency and active initiatives.",
+    "description": "An inviting and accessible template for charities, NGOs, and community initiatives to drive engagement.",
+    "path": "/showcase/template4/index.html",
+    "image": "/showcase/template4/preview.jpg",
+    "phase": "Planning",
+    "metrics": {
+      "performance": 100,
+      "accessibility": 100,
+      "seo": 98
+    }
+  }
+]
