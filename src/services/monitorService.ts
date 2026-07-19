@@ -6,6 +6,7 @@ export interface InfrastructureMetrics {
 
 export const fetchInfrastructureMetrics = async (subdomain: string): Promise<InfrastructureMetrics> => {
   // In production, fetch from specific production endpoints
+  console.log(`[MONITOR] Fetching health for ${subdomain}`);
   // e.g., const response = await fetch(`https://${subdomain}/api/v1/health`);
   
   // Simulated API response for demo

@@ -322,6 +322,111 @@ html, body {
   }
 }
 
-.print-footer {
-  display: none;
+
+/* ============================================================================
+   REFINED PRINT PROTOCOL (OVERRIDE)
+   ============================================================================ */
+@media print {
+  /* Hide all UI noise */
+  .print\:hidden,
+  nav,
+  footer:not(.print-footer),
+  .spatial-command-surface,
+  .command-palette,
+  button,
+  .glass-card::before,
+  .animate-pulse {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Reset colors for high-contrast grayscale output */
+  :root,
+  [data-theme="dark"], 
+  [data-theme="light"] {
+    --color-bg-primary: #ffffff !important;
+    --color-text-primary: #000000 !important;
+    --color-text-secondary: #333333 !important;
+    --color-border: #cccccc !important;
+    --color-accent: #000000 !important;
+    --color-accent-rgb: 0, 0, 0;
+  }
+
+  /* Structural print integrity */
+  .glass-card {
+    background: #ffffff !important;
+    border: 1pt solid #dddddd !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    padding: 1.5em !important;
+    margin-bottom: 2em !important;
+    color: #000000 !important;
+  }
+
+  /* Clean technical visualizations */
+  .infrastructure-monitor, 
+  .transparency-chart,
+  .recharts-wrapper,
+  .compliance-dashboard {
+    filter: grayscale(100%) contrast(150%) !important;
+    border: 1pt solid #000000 !important;
+    padding: 1.5em !important;
+    margin: 2em 0 !important;
+    background: #ffffff !important;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4 {
+    color: #000000 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    letter-spacing: normal !important;
+  }
+
+  /* Link transparency */
+  a:after {
+    content: " (" attr(href) ")" !important;
+    font-size: 9pt !important;
+    font-family: var(--font-mono);
+    color: #666666 !important;
+  }
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE (ACCESSIBILITY OVERRIDE)
+   ============================================================================ */
+.high-contrast {
+  --color-bg-primary: #000000 !important;
+  --color-bg-secondary: #111111 !important;
+  --color-text-primary: #ffffff !important;
+  --color-text-secondary: #ffff00 !important; /* High visibility yellow */
+  --color-accent: #00ff00 !important; /* Electric green */
+  --color-border: #ffffff !important;
+}
+
+.high-contrast .glass-card {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+.high-contrast button {
+  border: 2px solid #ffffff !important;
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast button:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+.high-contrast p, .high-contrast span, .high-contrast div {
+  text-shadow: none !important;
 }

@@ -9,6 +9,7 @@ import { MotionProvider } from './context/MotionContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { useFluidGridManager } from './engine/FluidGridManager';
 import { useRouteTracking } from './hooks/useRouteTracking';
+import { useRoutePrefetch } from './hooks/useRoutePrefetch';
 
 // Sovereign Additions
 import { ScrollProgressBar } from './components/ScrollProgressBar';
@@ -38,6 +39,7 @@ import Socials from './pages/Socials';
 import { StackAudit } from './pages/StackAudit';
 import { TwinEngines } from './pages/TwinEngines';
 import { Showcase } from './pages/Showcase';
+import { Settings } from './pages/Settings';
 
 // ============================================================================
 // METAMORPHIC CORE ARCHITECTURE // ISABIRYE LATIF CORE ENTRY
@@ -72,6 +74,7 @@ const AnimatedRoutes = () => {
         <Route path="/stack" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><StackAudit /></motion.div>} />
         <Route path="/socials" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Socials /></motion.div>} />
         <Route path="/twin-engines" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><TwinEngines /></motion.div>} />
+        <Route path="/settings" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Settings /></motion.div>} />
         
         <Route path="*" element={
           <div className="py-12 text-center font-mono">
@@ -86,6 +89,9 @@ const AnimatedRoutes = () => {
 
 export const App: React.FC = () => {
   const { resonance } = useFluidGridManager();
+  
+  // Prefetch critical routes for instantaneous navigation
+  useRoutePrefetch(['/study', '/stack', '/resonance', '/manifesto', '/legal']);
   
   return (
     <HelmetProvider>

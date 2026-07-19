@@ -117,6 +117,14 @@ const SEARCH_INDEX: SearchItem[] = [
     keywords: ['legal', 'privacy', 'policy', 'terms', 'cookies', 'security'],
     icon: FileText
   },
+  { 
+    name: 'System Settings', 
+    description: 'Configure global visual orchestration, aspect ratios, and architectural deployment protocols.', 
+    path: '/settings', 
+    category: 'NAVIGATION',
+    keywords: ['settings', 'config', 'theme', 'aspect', 'ratio', 'contrast', 'github', 'cloudflare', 'deploy'],
+    icon: Command
+  },
 
   // SPECIFIC PROJECT MODULES (FULL-TEXT ENHANCED)
   { 

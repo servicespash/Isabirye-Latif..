@@ -1,0 +1,10 @@
+name = "cymatic-evolution"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "./dist"
+
+[site]
+bucket = "./dist"
+
+[[routes]]
+pattern = "cymatichub.xyz/*"
+script = "dist/server.cjs"

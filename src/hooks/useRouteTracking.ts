@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { trackPageView, trackUniqueVisitor } from '../services/analyticsService';
 
 export const useRouteTracking = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Analytics tracking logic
+    // Real Analytics tracking
+    trackPageView();
+    trackUniqueVisitor();
     console.log(`[ANALYTICS] Route changed to: ${location.pathname}${location.hash}`);
   }, [location.pathname, location.hash]);
 
