@@ -1,10 +1,11 @@
-name = "cymatic-evolution"
+name = "isabirye-latif"
+main = "dist/server.cjs"
 compatibility_date = "2024-01-01"
-pages_build_output_dir = "./dist"
+compatibility_flags = ["nodejs_compat"]
 
-[site]
-bucket = "./dist"
+[assets]
+directory = "./dist"
 
 [[routes]]
 pattern = "cymatichub.xyz/*"
-script = "dist/server.cjs"
+custom_domain = true

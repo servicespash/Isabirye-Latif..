@@ -26,11 +26,58 @@ export const SovereignInquiryModal: React.FC = () => {
     message: '',
   });
 
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
+
+  const [fieldErrors, setFieldErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const validateField = (name: string, value: string): string => {
+    if (name === 'name') {
+      if (!value.trim()) return 'Name is required.';
+      if (value.length > 100) return 'Name cannot exceed 100 characters.';
+    }
+    if (name === 'email') {
+      if (!value.trim()) return 'Email is required.';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value.trim())) return 'Please enter a valid email address (e.g. name@domain.com).';
+      if (value.length > 150) return 'Email cannot exceed 150 characters.';
+    }
+    if (name === 'message') {
+      if (!value.trim()) return 'Message is required.';
+      if (value.length > 2000) return 'Message cannot exceed 2000 characters.';
+    }
+    return '';
+  };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name in touched) {
+      setTouched((prev) => ({ ...prev, [name]: true }));
+      const error = validateField(name, value);
+      setFieldErrors((prev) => ({ ...prev, [name]: error }));
+    }
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    if (name in touched) {
+      setTouched((prev) => ({ ...prev, [name]: true }));
+      const error = validateField(name, value);
+      setFieldErrors((prev) => ({ ...prev, [name]: error }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,17 +85,14 @@ export const SovereignInquiryModal: React.FC = () => {
     setErrorMsg(null);
 
     // Hard character and format validation
-    if (!formData.name.trim() || formData.name.length > 100) {
-      setErrorMsg('Name must be between 1 and 100 characters.');
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email.trim()) || formData.email.length > 150) {
-      setErrorMsg('Please enter a valid email (max 150 chars).');
-      return;
-    }
-    if (!formData.message.trim() || formData.message.length > 2000) {
-      setErrorMsg('Message must be between 1 and 2000 characters.');
+    const nameErr = validateField('name', formData.name);
+    const emailErr = validateField('email', formData.email);
+    const messageErr = validateField('message', formData.message);
+
+    if (nameErr || emailErr || messageErr) {
+      setTouched({ name: true, email: true, message: true });
+      setFieldErrors({ name: nameErr, email: emailErr, message: messageErr });
+      setErrorMsg('Please correct the validation errors in the form.');
       return;
     }
 
@@ -103,6 +147,8 @@ Sovereign Integration Gateway`;
         category: 'General Resonance Inquiry',
         message: '',
       });
+      setTouched({ name: false, email: false, message: false });
+      setFieldErrors({ name: '', email: '', message: '' });
     } catch (err) {
       console.error('Inquiry Submission Failure:', err);
       try {
@@ -128,6 +174,8 @@ Sovereign Integration Gateway`;
     setIsOpen(false);
     setSubmitSuccess(false);
     setErrorMsg(null);
+    setTouched({ name: false, email: false, message: false });
+    setFieldErrors({ name: '', email: '', message: '' });
   };
 
   return (
@@ -242,10 +290,20 @@ Sovereign Integration Gateway`;
                         required
                         value={formData.name}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         maxLength={100}
                         placeholder="e.g. Dr. Vance Cooper"
-                        className="w-full p-2.5 rounded-xl border border-neutral-800 bg-black/50 text-white placeholder-neutral-600 focus:outline-none focus:border-[var(--color-accent)] transition-all"
+                        className={`w-full p-2.5 rounded-xl border bg-black/50 text-white placeholder-neutral-600 focus:outline-none transition-all ${
+                          touched.name && fieldErrors.name 
+                            ? 'border-yellow-500/50 focus:border-yellow-500 text-yellow-200' 
+                            : 'border-neutral-800 focus:border-[var(--color-accent)]'
+                        }`}
                       />
+                      {touched.name && fieldErrors.name && (
+                        <p className="text-yellow-500 text-[9px] mt-1 font-mono uppercase tracking-wider animate-pulse">
+                          ⚠ {fieldErrors.name}
+                        </p>
+                      )}
                     </div>
 
                     {/* Email */}
@@ -257,10 +315,20 @@ Sovereign Integration Gateway`;
                         required
                         value={formData.email}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         maxLength={150}
                         placeholder="e.g. vance@resonance.org"
-                        className="w-full p-2.5 rounded-xl border border-neutral-800 bg-black/50 text-white placeholder-neutral-600 focus:outline-none focus:border-[var(--color-accent)] transition-all"
+                        className={`w-full p-2.5 rounded-xl border bg-black/50 text-white placeholder-neutral-600 focus:outline-none transition-all ${
+                          touched.email && fieldErrors.email 
+                            ? 'border-yellow-500/50 focus:border-yellow-500 text-yellow-200' 
+                            : 'border-neutral-800 focus:border-[var(--color-accent)]'
+                        }`}
                       />
+                      {touched.email && fieldErrors.email && (
+                        <p className="text-yellow-500 text-[9px] mt-1 font-mono uppercase tracking-wider animate-pulse">
+                          ⚠ {fieldErrors.email}
+                        </p>
+                      )}
                     </div>
 
                     {/* Category Dropdown */}
@@ -294,10 +362,20 @@ Sovereign Integration Gateway`;
                         rows={4}
                         value={formData.message}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         maxLength={2000}
                         placeholder="Establish your contextual goals or describe your research parameters..."
-                        className="w-full p-2.5 rounded-xl border border-neutral-800 bg-black/50 text-white placeholder-neutral-600 focus:outline-none focus:border-[var(--color-accent)] transition-all resize-none"
+                        className={`w-full p-2.5 rounded-xl border bg-black/50 text-white placeholder-neutral-600 focus:outline-none transition-all resize-none ${
+                          touched.message && fieldErrors.message 
+                            ? 'border-yellow-500/50 focus:border-yellow-500 text-yellow-200' 
+                            : 'border-neutral-800 focus:border-[var(--color-accent)]'
+                        }`}
                       />
+                      {touched.message && fieldErrors.message && (
+                        <p className="text-yellow-500 text-[9px] mt-1 font-mono uppercase tracking-wider animate-pulse">
+                          ⚠ {fieldErrors.message}
+                        </p>
+                      )}
                     </div>
 
                     {/* Error Display */}
