@@ -24,6 +24,7 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       output: {
+        format: 'es',
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return 'vendor';

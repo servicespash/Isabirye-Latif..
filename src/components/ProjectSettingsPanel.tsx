@@ -32,7 +32,7 @@ jobs:
           folder: dist`;
 
   const cloudflareConfig = `name = "isabirye-latif"
-main = "dist/server.js"
+main = "workers-site/index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
@@ -40,9 +40,7 @@ compatibility_flags = ["nodejs_compat"]
 directory = "dist"
 not_found_handling = "single-page-application"
 
-[[routes]]
-pattern = "cymatichub.xyz/*"
-custom_domain = true`;
+routes = ["cymatichub.xyz/*"]`;
 
   return (
     <div className="space-y-12">

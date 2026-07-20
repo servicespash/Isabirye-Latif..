@@ -1,5 +1,5 @@
 name = "isabirye-latif"
-main = "dist/server.js"
+main = "workers-site/index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
@@ -7,5 +7,4 @@ compatibility_flags = ["nodejs_compat"]
 directory = "dist"
 not_found_handling = "single-page-application"
 
-[[routes]]
-pattern = "cymatichub.xyz/*"
+routes = ["cymatichub.xyz/*"]
