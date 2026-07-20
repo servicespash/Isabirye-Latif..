@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     nodePolyfills({
-      include: ['fs', 'path', 'os', 'buffer', 'stream', 'util', 'crypto'],
+      include: ['fs', 'path', 'os', 'buffer', 'stream', 'util', 'crypto', 'url', 'events', 'process', 'http', 'https', 'zlib', 'querystring', 'punycode', 'string_decoder', 'timers', 'tty', 'vm'],
       globals: {
         Buffer: true,
         global: true,
@@ -19,6 +19,32 @@ export default defineConfig({
     sourcemap: false,
     minify: 'esbuild',
     rollupOptions: {
+      external: [
+        'node:fs',
+        'node:path',
+        'node:os',
+        'node:crypto',
+        'node:stream',
+        'node:url',
+        'node:util',
+        'node:events',
+        'node:http',
+        'node:https',
+        'node:zlib',
+        'node:buffer',
+        'fs',
+        'path',
+        'os',
+        'crypto',
+        'stream',
+        'url',
+        'util',
+        'events',
+        'http',
+        'https',
+        'zlib',
+        'buffer'
+      ],
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
