@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { CymaticSEO } from '../components/CymaticSEO';
 import { CymaticLayout } from '../components/CymaticLayout';
 import { SystemHeartbeat } from '../components/SystemHeartbeat';

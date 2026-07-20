@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CymaticLayout } from '../components/CymaticLayout';
 import { CymaticSEO } from '../components/CymaticSEO';
 import { Monitor, Smartphone, Tablet, ExternalLink, X, LayoutGrid, Filter, Search } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import templatesData from '../data/templates.json';
 
 type DeviceType = 'desktop' | 'tablet' | 'mobile';

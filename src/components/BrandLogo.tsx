@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 export const BrandLogo = () => {
   // Sequence: 0=IL, 1=Isabirye Latif, 2=Latty Adams (LA)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { CymaticLayout } from '../components/CymaticLayout';
 import { SystemHeartbeat } from '../components/SystemHeartbeat';
 import { getGlobalStats } from '../services/analyticsService';

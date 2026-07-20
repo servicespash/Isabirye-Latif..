@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { AppWrapper } from './components/AppWrapper';
 import { CymaticSensoryLayer } from './components/CymaticSensoryLayer';
 import { HelmetProvider } from 'react-helmet-async';

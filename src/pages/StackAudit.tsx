@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CymaticLayout } from '../components/CymaticLayout';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   ResponsiveContainer, 
   RadarChart, 
