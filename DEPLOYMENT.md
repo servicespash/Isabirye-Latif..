@@ -25,7 +25,7 @@ npm run build
 
 The build process generates:
 - `dist/`: Static client assets
-- `dist/server.cjs`: Bundled Express server for Node.js environments
+- `dist/server.js`: Bundled Hono server (ESM) for Node.js and Cloudflare Workers environments
 
 ## 3. Production Deployment
 

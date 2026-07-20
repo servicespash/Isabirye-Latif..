@@ -102,16 +102,8 @@ app.get('/api/v1/releases', async (c) => {
   }
 });
 
-// For production, static assets are handled by Cloudflare [assets] automatically.
-// We only need a fallback for SPA routes that aren't matched by assets or our routes.
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', async (c) => {
-    return c.notFound();
-  });
-}
-
 // Development server setup
-if (process.env.NODE_ENV !== 'production' && typeof process !== 'undefined') {
+if (typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production') {
   const startDev = async () => {
     const { serve } = await import('@hono/node-server');
     const { createServer: createViteServer } = await import('vite');

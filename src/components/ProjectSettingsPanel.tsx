@@ -31,12 +31,18 @@ jobs:
         with:
           folder: dist`;
 
-  const cloudflareConfig = `[site]
-bucket = "./dist"
+  const cloudflareConfig = `name = "isabirye-latif"
+main = "dist/server.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
 
-[env.production]
-name = "cymatic-evolution"
-route = "cymatichub.xyz/*"`;
+[assets]
+directory = "dist"
+not_found_handling = "single-page-application"
+
+[[routes]]
+pattern = "cymatichub.xyz/*"
+custom_domain = true`;
 
   return (
     <div className="space-y-12">
