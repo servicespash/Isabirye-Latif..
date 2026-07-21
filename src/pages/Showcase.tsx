@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { CymaticLayout } from '../components/CymaticLayout';
-import { CymaticSEO } from '../components/CymaticSEO';
 import { Monitor, Smartphone, Tablet, ExternalLink, X, LayoutGrid, Filter, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import templatesData from '../data/templates.json';
+
+import { useAppContext } from '../hooks/useAppContext';
 
 type DeviceType = 'desktop' | 'tablet' | 'mobile';
 
@@ -46,8 +47,15 @@ interface SimulatorModalProps {
 }
 
 const SimulatorModal: React.FC<SimulatorModalProps> = ({ activeTemplateId, setActiveTemplateId }) => {
+  const { logPageView } = useAppContext();
   const [currentDevice, setCurrentDevice] = useState<DeviceType>('desktop');
   const activeTemplate = templates.find(t => t.id === activeTemplateId);
+
+  useEffect(() => {
+    if (activeTemplateId) {
+      logPageView('template_preview', activeTemplateId);
+    }
+  }, [activeTemplateId, logPageView]);
 
   if (!activeTemplate) return null;
 
@@ -168,27 +176,18 @@ const SimulatorModal: React.FC<SimulatorModalProps> = ({ activeTemplateId, setAc
 };
 
 export const Showcase: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>(() => {
-    const saved = localStorage.getItem('showcase_category');
-    return (saved && saved !== 'undefined') ? saved : 'All';
-  });
+  const { 
+    selectedCategory, 
+    setSelectedCategory, 
+    activeTemplateId, 
+    setActiveTemplateId,
+    logPageView 
+  } = useAppContext();
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [activeTemplateId, setActiveTemplateId] = useState<string | null>(() => {
-    const saved = localStorage.getItem('active_template_id');
-    return (saved && saved !== 'undefined') ? saved : null;
-  });
 
   useEffect(() => {
-    localStorage.setItem('showcase_category', selectedCategory);
-  }, [selectedCategory]);
-
-  useEffect(() => {
-    if (activeTemplateId) {
-      localStorage.setItem('active_template_id', activeTemplateId);
-    } else {
-      localStorage.removeItem('active_template_id');
-    }
-  }, [activeTemplateId]);
+    logPageView('showcase');
+  }, [logPageView]);
 
   const filteredTemplates = templates.filter(t => {
       const matchesCategory = selectedCategory === 'All' || t.category === selectedCategory;
@@ -197,9 +196,14 @@ export const Showcase: React.FC = () => {
       return matchesCategory && matchesSearch;
   });
 
+  const activeTemplate = templates.find(t => t.id === activeTemplateId);
+
   return (
-    <CymaticLayout>
-      <CymaticSEO />
+    <CymaticLayout
+      seoTitle={activeTemplate ? `${activeTemplate.title} | Template Showcase | Isabirye Latif` : undefined}
+      seoDescription={activeTemplate ? activeTemplate.description : undefined}
+      seoOgImage={activeTemplate ? activeTemplate.image : undefined}
+    >
       <div className="py-8 space-y-8">
         
         {/* Header Section */}

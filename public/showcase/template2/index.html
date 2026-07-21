@@ -322,50 +322,11 @@
     </footer>
 
     <script>
-        // Router state
-        function navigateTo(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Show selected page
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-
-            // Update Navigation active states
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('text-emerald-400');
-                link.classList.add('text-apex-textMuted');
-            });
-            const activeLink = document.getElementById(`nav-${pageId}`);
-            if (activeLink) {
-                activeLink.classList.remove('text-apex-textMuted');
-                activeLink.classList.add('text-emerald-400');
-            }
-
-            // Scroll back to top on navigation
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.className = "fa-solid fa-xmark text-2xl text-white";
-            } else {
-                menu.classList.add('hidden');
-                icon.className = "fa-solid fa-bars text-2xl text-gray-300";
-            }
-        }
-
-        // Form Submission Logic (no alert windows, clean DOM injection)
+        window.templateId = 'template2';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
+        // Form Submission Logic
         function handleFormSubmit(event) {
             event.preventDefault();
             const form = document.getElementById('contact-form');

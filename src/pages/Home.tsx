@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { CymaticSEO } from '../components/CymaticSEO';
 import { CymaticLayout } from '../components/CymaticLayout';
 import { SystemHeartbeat } from '../components/SystemHeartbeat';
 import { useStats } from '../hooks/useStats';
@@ -34,7 +33,6 @@ export default function Home() {
 
   return (
     <CymaticLayout>
-      <CymaticSEO />
       <div id="tsparticles" className="fixed inset-0 -z-10" />
       <div className="w-full space-y-16 py-4">
         

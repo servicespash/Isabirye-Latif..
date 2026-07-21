@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { SeoAuditor } from './SeoAuditor';
 import { ComplianceDashboard } from './ComplianceDashboard';
 import { ChevronDown, ChevronUp, Cpu, ShieldCheck } from 'lucide-react';
+import { useAppContext } from '../hooks/useAppContext';
 
 export const CymaticFooter: React.FC = () => {
+  const { branding } = useAppContext();
   const [isAuditorOpen, setIsAuditorOpen] = useState(false);
 
   return (
@@ -17,7 +19,7 @@ export const CymaticFooter: React.FC = () => {
         
         {/* BRANDING */}
         <div className="flex flex-col gap-1">
-          <span className="font-mono text-sm font-black uppercase text-[var(--color-text-primary)]">CYMATIC EVOLUTION</span>
+          <span className="font-mono text-sm font-black uppercase text-[var(--color-text-primary)]">{branding.name}</span>
           <div className="flex items-center justify-center md:justify-start gap-3 mt-1">
             <span className="font-mono text-[9px] text-[var(--color-text-secondary)] uppercase tracking-wider">
               © 2026 ISABIRYE LATIF | ARCHITECT

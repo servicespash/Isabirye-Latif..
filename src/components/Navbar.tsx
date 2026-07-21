@@ -6,8 +6,10 @@ import { ResonanceToggle } from './ResonanceToggle';
 import { SpatialCommandSurface } from '../navigation/SpatialCommandSurface';
 import { Search } from 'lucide-react';
 import { PrintButton } from './PrintButton';
+import { useAppContext } from '../hooks/useAppContext';
 
 export const Navbar = () => {
+  const { branding } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -53,7 +55,7 @@ export const Navbar = () => {
 
             <div className="hidden md:flex flex-1 overflow-x-auto whitespace-nowrap no-scrollbar items-center">
               <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[var(--color-text-primary)] group-hover:text-[#00f2fe] transition-colors duration-300">
-                Architect_Node // Cymatic_Study
+                Architect_Node // {branding.name}
               </span>
             </div>
           </Link>

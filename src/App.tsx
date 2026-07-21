@@ -18,7 +18,6 @@ import { KeyboardNavigation } from './components/KeyboardNavigation';
 import { SovereignInquiryModal } from './components/SovereignInquiryModal';
 import { CommandPalette } from './components/CommandPalette';
 import { DevSeoChecklist } from './components/DevSeoChecklist';
-import { CymaticSEO } from './components/CymaticSEO';
 import { OfflineStatusBanner } from './components/OfflineStatusBanner';
 
 // Real Page Components
@@ -40,6 +39,8 @@ import { StackAudit } from './pages/StackAudit';
 import { TwinEngines } from './pages/TwinEngines';
 import { Showcase } from './pages/Showcase';
 import { Settings } from './pages/Settings';
+
+import { AppProvider } from './context/AppContext';
 
 // ============================================================================
 // METAMORPHIC CORE ARCHITECTURE // ISABIRYE LATIF CORE ENTRY
@@ -97,28 +98,29 @@ export const App: React.FC = () => {
     <HelmetProvider>
       <Router>
         <MotionProvider>
-          <ThemeProvider resonance={resonance}>
-            <AppWrapper>
-              <OfflineStatusBanner />
-              <ScrollProgressBar />
-              <CymaticCursor />
-              <KeyboardNavigation />
-              <SovereignInquiryModal />
-              <CommandPalette />
-              <DevSeoChecklist />
-              <CymaticSEO />
-              <CymaticSensoryLayer />
-              <Suspense fallback={
-                <div className="w-full max-w-[90rem] mx-auto py-10 sm:py-24 px-4 sm:px-12 md:px-20 space-y-8">
-                  <Skeleton className="h-12 w-1/3" />
-                  <Skeleton className="h-64 w-full" />
-                  <Skeleton className="h-8 w-2/3" />
-                </div>
-              }>
-                <AnimatedRoutes />
-              </Suspense>
-            </AppWrapper>
-          </ThemeProvider>
+          <AppProvider>
+            <ThemeProvider resonance={resonance}>
+              <AppWrapper>
+                <OfflineStatusBanner />
+                <ScrollProgressBar />
+                <CymaticCursor />
+                <KeyboardNavigation />
+                <SovereignInquiryModal />
+                <CommandPalette />
+                <DevSeoChecklist />
+                <CymaticSensoryLayer />
+                <Suspense fallback={
+                  <div className="w-full max-w-[90rem] mx-auto py-10 sm:py-24 px-4 sm:px-12 md:px-20 space-y-8">
+                    <Skeleton className="h-12 w-1/3" />
+                    <Skeleton className="h-64 w-full" />
+                    <Skeleton className="h-8 w-2/3" />
+                  </div>
+                }>
+                  <AnimatedRoutes />
+                </Suspense>
+              </AppWrapper>
+            </ThemeProvider>
+          </AppProvider>
         </MotionProvider>
       </Router>
     </HelmetProvider>

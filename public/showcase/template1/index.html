@@ -51,7 +51,7 @@
         }
     </style>
 </head>
-<body class="bg-academy-light text-academy-navy antialiased font-sans flex flex-col min-h-screen">
+<body class="template-academy bg-academy-light text-academy-navy antialiased font-sans flex flex-col min-h-screen">
 
     <!-- Global Navigation Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -407,51 +407,11 @@
         </div>
     </footer>
 
-    <!-- Core Navigation Routing & State Controller -->
     <script>
-        // Router state
-        function navigateTo(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Show selected page
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-
-            // Update Navigation active states
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('text-academy-teal');
-                link.classList.add('text-academy-navy/80');
-            });
-            const activeLink = document.getElementById(`nav-${pageId}`);
-            if (activeLink) {
-                activeLink.classList.remove('text-academy-navy/80');
-                activeLink.classList.add('text-academy-teal');
-            }
-
-            // Scroll back to top on navigation
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.className = "fa-solid fa-xmark text-2xl";
-            } else {
-                menu.classList.add('hidden');
-                icon.className = "fa-solid fa-bars text-2xl";
-            }
-        }
-
+        window.templateId = 'template1';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
         // Custom Form Submission Response (No real alerts!)
         function handleFormSubmit(event) {
             event.preventDefault();

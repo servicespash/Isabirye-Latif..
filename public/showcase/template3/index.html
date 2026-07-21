@@ -228,49 +228,10 @@
     </footer>
 
     <script>
-        // Router state
-        function navigateTo(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Show selected page
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-
-            // Update Navigation active states
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('text-sora-dark');
-                link.classList.add('text-sora-muted');
-            });
-            const activeLink = document.getElementById(`nav-${pageId}`);
-            if (activeLink) {
-                activeLink.classList.remove('text-sora-muted');
-                activeLink.classList.add('text-sora-dark');
-            }
-
-            // Scroll back to top on navigation
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.className = "fa-solid fa-xmark text-xl text-sora-dark";
-            } else {
-                menu.classList.add('hidden');
-                icon.className = "fa-solid fa-bars text-xl text-sora-dark";
-            }
-        }
-
+        window.templateId = 'template3';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
         // Clean inquiry trigger
         function handleFormSubmit(event) {
             event.preventDefault();

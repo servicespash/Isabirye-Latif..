@@ -2,6 +2,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { useAppContext } from '../hooks/useAppContext';
 
 interface CymaticSEOProps {
   title?: string;
@@ -133,10 +134,11 @@ export const CymaticSEO: React.FC<CymaticSEOProps> = ({
   ogType,
   jsonLd,
 }) => {
+  const { branding } = useAppContext();
   const location = useLocation();
   const pathname = location.pathname;
 
-  const siteName = "Cymatic Evolution";
+  const siteName = branding.name;
   const fullName = "Isabirye Latif (Latty Adams)";
   const jobTitle = "Solo Architect & Resonance Engineer";
   const baseUrl = "https://cymatichub.xyz";
@@ -188,14 +190,14 @@ export const CymaticSEO: React.FC<CymaticSEOProps> = ({
         ],
         "worksFor": {
           "@type": "Organization",
-          "name": "Cymatic Evolution",
+          "name": branding.name,
           "url": baseUrl
         }
       },
       {
         "@type": "ProfessionalService",
         "@id": `${baseUrl}/#organization`,
-        "name": "Cymatic Evolution",
+        "name": branding.name,
         "url": baseUrl,
         "description": "Architecting high-performance web templates, systems, and institutional digital infrastructure.",
         "founder": {
@@ -240,6 +242,8 @@ export const CymaticSEO: React.FC<CymaticSEOProps> = ({
       <meta property="og:site_name" content={siteName} />
       
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@lattyadams" />
+      <meta name="twitter:creator" content="@lattyadams" />
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalOgImage} />

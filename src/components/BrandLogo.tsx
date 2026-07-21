@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useAppContext } from '../hooks/useAppContext';
 
 export const BrandLogo = () => {
+  const { branding } = useAppContext();
   // Sequence: 0=IL, 1=Isabirye Latif, 2=Latty Adams (LA)
   const [index, setIndex] = useState(0);
 
@@ -14,10 +16,10 @@ export const BrandLogo = () => {
 
   const getContent = () => {
     switch (index) {
-      case 0: return { content: "IL", label: "Cymatic Architect" };
+      case 0: return { content: branding.logo, label: "Cymatic Architect" };
       case 1: return { content: "Isabirye Latif", label: "Solo Architect" };
       case 2: return { content: "LA", label: "Latty Adams" };
-      default: return { content: "IL", label: "Cymatic Architect" };
+      default: return { content: branding.logo, label: "Cymatic Architect" };
     }
   };
 

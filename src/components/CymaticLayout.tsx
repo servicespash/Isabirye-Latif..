@@ -60,12 +60,28 @@ const UIFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 
-export const CymaticLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface CymaticLayoutProps {
+  children: React.ReactNode;
+  seoTitle?: string;
+  seoDescription?: string;
+  seoOgImage?: string;
+}
+
+export const CymaticLayout: React.FC<CymaticLayoutProps> = ({ 
+  children, 
+  seoTitle, 
+  seoDescription, 
+  seoOgImage 
+}) => {
   useDocumentMetadata();
 
   return (
     <>
-      <CymaticSEO />
+      <CymaticSEO 
+        title={seoTitle} 
+        description={seoDescription} 
+        ogImage={seoOgImage} 
+      />
       <UIFrame>
         <motion.div
           initial={{ opacity: 0, y: 15 }}

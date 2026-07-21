@@ -1,6 +1,7 @@
 import React from 'react';
 import { CymaticLayout } from '../components/CymaticLayout';
 import { ProjectSettingsPanel } from '../components/ProjectSettingsPanel';
+import { BrandingSettings } from '../components/BrandingSettings';
 import { Sliders, ShieldCheck } from 'lucide-react';
 
 export const Settings: React.FC = () => {
@@ -31,8 +32,9 @@ export const Settings: React.FC = () => {
           </div>
         </div>
 
-        {/* Settings Panel */}
-        <div className="max-w-4xl">
+        {/* Settings Panels */}
+        <div className="max-w-4xl space-y-8">
+          <BrandingSettings />
           <ProjectSettingsPanel />
         </div>
 
