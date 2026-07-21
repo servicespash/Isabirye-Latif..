@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Gracefully handle environments (like sandboxed iframes or test runners) where
+      // third-party scripts or extensions attempt to override window.fetch,
+      // preventing crashes due to read-only getters.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var currentFetch = originalFetch;
+          
+          function setupGetterSetter(obj, prop) {
+            var desc = Object.getOwnPropertyDescriptor(obj, prop);
+            if (!desc || desc.configurable) {
+              Object.defineProperty(obj, prop, {
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val || originalFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+              return true;
+            }
+            return false;
+          }
+
+          // Try defining on window directly first
+          var success = setupGetterSetter(window, 'fetch');
+          
+          // If not successful or to be safe, also try Window.prototype
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            setupGetterSetter(Window.prototype, 'fetch');
+          }
+        } catch (e) {
+          console.warn("Window fetch override guard active:", e);
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cymatic Study | Institutional Sovereign Infrastructure</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#050505" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <style>
+      body { 
+        margin: 0; 
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-Dtzq-jEw.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-W-g5d7YK.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-BFXu6F2a.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CHGp9hgT.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
