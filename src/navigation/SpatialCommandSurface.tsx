@@ -64,6 +64,12 @@ export const SpatialCommandSurface: React.FC<SpatialCommandSurfaceProps> = ({ is
           <div className="text-[9px] font-mono text-[#7f00ff] mb-2 tracking-widest">// NODE_06</div>
           <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Socials</h3>
         </Link>
+
+        {/* SHOWCASE */}
+        <Link to="/showcase" onClick={onClose} className="group p-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/30 hover:border-[#00f2fe] transition-all duration-500">
+          <div className="text-[9px] font-mono text-[#00f2fe] mb-2 tracking-widest">// NODE_07</div>
+          <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Showcase</h3>
+        </Link>
       </div>
 
       {/* 3. FOOTER SIGN-OFF SYSTEM */}

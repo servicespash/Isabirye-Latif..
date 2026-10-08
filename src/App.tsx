@@ -18,6 +18,7 @@ import { ComplianceProtocol } from './pages/ComplianceProtocol';
 import { Transparency } from './pages/Transparency';
 import Socials from './pages/Socials';
 import { StackAudit } from './pages/StackAudit';
+import Showcase from './pages/Showcase';
 
 // ============================================================================
 // METAMORPHIC CORE ARCHITECTURE // ISABIRYE LATIF CORE ENTRY
@@ -51,6 +52,7 @@ export const App: React.FC = () => {
                 <Route path="/legal" element={<ComplianceProtocol />} />
                 <Route path="/transparency" element={<Transparency />} />
                 <Route path="/stack" element={<StackAudit />} />
+                <Route path="/showcase" element={<Showcase />} />
                 <Route path="/socials" element={<Socials />} />
                 
                 {/* System Intercept Wildcard Guard */}

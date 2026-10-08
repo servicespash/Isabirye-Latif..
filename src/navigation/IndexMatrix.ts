@@ -40,6 +40,14 @@ export const IndexMatrix: Record<string, NavigationNode> = {
     resonanceWeight: 0.7, 
     description: 'Generative experiments and sensory layers.' 
   },
+  showcase: { 
+    id: 'showcase', 
+    title: 'Showcase', 
+    path: '/showcase', 
+    category: 'architecture', 
+    resonanceWeight: 0.7, 
+    description: 'Template structural previews.' 
+  },
   learning: { 
     id: 'learning', 
     title: 'Learning', 
