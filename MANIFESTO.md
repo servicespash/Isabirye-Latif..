@@ -7,7 +7,7 @@ Isabirye Latif, Solo Architect.
 To build high-resilience, institutional-grade software systems that bridge the gap between hard-won life experience and sophisticated digital infrastructure.
 
 ## Core Systems
-* **Cymatic Hub**: The institutional heartbeat. A study ecosystem for NCDC and MOES compliance, bridging students, teachers, and administrators. 
+* **Cymatic Study**: The institutional heartbeat. A study ecosystem for NCDC and MOES compliance, bridging students, teachers, and administrators. 
 * **Cymatic Resonance**: The analytical engine. An institutional register, attendance monitor, and real-time operational dashboard for executive execution.
 
 ## The Principles

@@ -4,7 +4,7 @@
 - **Founder/Architect:** Isabirye Latif
 - **Ecosystem Name:** Cymatic Evolution
 - **Core Systems:** 
-    - Cymatic Hub (Education/Management)
+    - Cymatic Study (Education/Management)
     - Cymatic Resonance (Analytical Design Engine)
 - **Design Philosophy:** **Ethereal Glassmorphism**
     - Focus on depth, luminosity, translucency, and adaptive light.

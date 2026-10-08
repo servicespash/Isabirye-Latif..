@@ -1,8 +1,21 @@
 import { CymaticLayout } from '../components/CymaticLayout';
+import { JSONLD } from '../components/JSONLD';
 
 export const Learning = () => {
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Professional Mastery Trajectory",
+    "description": "Continuous evolution of skills across counseling, human resources, and technical architecture.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Cymatic Engines Evolution"
+    }
+  };
+
   return (
     <CymaticLayout>
+      <JSONLD schema={courseSchema} />
       <div className="space-y-16">
         <section className="pt-10">
           <h2 className="font-mono text-[var(--color-accent)] text-[10px] tracking-[0.3em] uppercase mb-6">// MASTER_TRAJECTORY</h2>
@@ -34,3 +47,5 @@ export const Learning = () => {
     </CymaticLayout>
   );
 };
+
+export default Learning;

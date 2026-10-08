@@ -19,9 +19,9 @@ export const PortraitRegistry: AssetContext[] = [
     type: 'image'
   },
   {
-    id: 'bento_hub',
+    id: 'bento_study',
     source: '/media/photo2.png',
-    title: 'Cymatic Hub Architecture',
+    title: 'Cymatic Study Architecture',
     category: 'THE_BUILDER',
     type: 'image'
   },

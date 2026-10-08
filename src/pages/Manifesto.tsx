@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { CymaticLayout } from '../components/CymaticLayout';
+import { calculateReadingTime } from '../lib/readingTime';
 
 interface CTAState {
   sponsor: boolean;
@@ -7,7 +9,17 @@ interface CTAState {
 }
 
 export const Manifesto = () => {
-  const [activeCTA, setActiveCTA] = useState<CTAState>({ sponsor: false, partner: false });
+  const [activeCTA, setActiveCTA] = React.useState<CTAState>({ sponsor: false, partner: false });
+  const [readingTime, setReadingTime] = React.useState(0);
+  
+  React.useEffect(() => {
+    // Calculate reading time after initial render to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const text = document.querySelector('article')?.innerText || "";
+      setReadingTime(calculateReadingTime(text));
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleCTA = (type: keyof CTAState) => {
     setActiveCTA(prev => ({ ...prev, [type]: !prev[type] }));
@@ -21,7 +33,7 @@ export const Manifesto = () => {
           text: 'Read the monumental manifesto of Isabirye Latif, the Solo Architect of Cymatic Evolution.',
           url: window.location.href,
         });
-      } catch (err) {
+      } catch {
         console.log('Share operation aborted');
       }
     } else {
@@ -39,7 +51,7 @@ export const Manifesto = () => {
     const messages = {
       sponsor: {
         wa: "Hello Isabirye Latif, I want to sponsor the Cymatic Evolution after reading your monumental manifesto.",
-        mail: "Subject: Sponsoring Cymatic Genesis\n\nHello Isabirye Latif,\n\nI have read your complete manifesto. I am deeply moved by the story and the technical vision of Cymatic Hub and Cymatic Resonance. I want to sponsor this growth."
+        mail: "Subject: Sponsoring Cymatic Genesis\n\nHello Isabirye Latif,\n\nI have read your complete manifesto. I am deeply moved by the story and the technical vision of Cymatic Study and Cymatic Resonance. I want to sponsor this growth."
       },
       partner: {
         wa: "Hello Isabirye Latif, I am interested in a strategic partnership with Cymatic Evolution.",
@@ -59,21 +71,33 @@ export const Manifesto = () => {
 
   return (
     <CymaticLayout>
-      <article className="w-full max-w-[90rem] mx-auto space-y-12 sm:space-y-32 py-10 sm:py-24 px-4 sm:px-12 md:px-20 font-sans text-zinc-100 antialiased selection:bg-[var(--color-accent)] selection:text-zinc-950 overflow-hidden">
+      <article className="w-full max-w-[100rem] mx-auto space-y-12 sm:space-y-32 py-10 sm:py-24 px-4 sm:px-8 md:px-16 lg:px-24 font-sans text-[var(--color-text-primary)] antialiased selection:bg-[var(--color-accent)] selection:text-zinc-950 overflow-x-hidden">
         
-        <header className="text-center space-y-6 sm:space-y-16 border-b border-zinc-800/80 pb-12 sm:pb-24 w-full">
-          <p className="text-[10px] sm:text-base uppercase tracking-[0.2em] sm:tracking-[0.4em] text-[var(--color-accent)] font-mono font-black break-words">
-            The Sovereign Blueprint
-          </p>
+        <header className="text-center space-y-6 sm:space-y-16 border-b border-zinc-800/80 pb-12 sm:pb-24 w-full relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gradient-to-b from-[var(--color-accent)] to-transparent"></div>
           
-          <h1 className="text-4xl sm:text-7xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[1] break-words">
+          <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 pt-8">
+            <p className="text-[9px] sm:text-xs uppercase tracking-[0.4em] text-[var(--color-accent)] font-mono font-black animate-pulse">
+              CYMATIC ENGINES EVOLUTION // {new Date().getFullYear()}
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] sm:text-base uppercase tracking-[0.2em] sm:tracking-[0.4em] text-[var(--color-text-secondary)] font-mono">
+                The Sovereign Blueprint
+              </span>
+              <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-[8px] sm:text-[10px] font-mono text-zinc-400">
+                {readingTime} MIN READ
+              </span>
+            </div>
+          </div>
+          
+          <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[11rem] font-black uppercase tracking-tighter leading-[0.85] break-words md:px-10">
             The Architecture <br />
             <span className="text-[var(--color-accent)]">of Resilience</span>
           </h1>
           
           <div className="h-[3px] sm:h-[4px] w-16 sm:w-32 bg-[var(--color-accent)] mx-auto my-4 sm:my-8 shadow-[0_0_15px_var(--color-accent)]"></div>
           
-          <p className="text-xl sm:text-4xl md:text-5xl font-light tracking-wide text-zinc-300">
+          <p className="text-xl sm:text-4xl md:text-5xl font-light tracking-wide text-[var(--color-text-secondary)]">
             Isabirye Latif — <span className="font-mono text-[var(--color-accent)] font-bold text-lg sm:text-4xl break-words">Solo Architect</span>
           </p>
 
@@ -101,9 +125,9 @@ export const Manifesto = () => {
           </div>
         </header>
 
-        <section className="space-y-16 sm:space-y-32 text-base sm:text-2xl md:text-3xl leading-relaxed sm:leading-[1.8] font-normal text-zinc-300 w-full max-w-6xl mx-auto">
+        <section className="space-y-16 sm:space-y-32 text-base sm:text-2xl md:text-3xl leading-relaxed sm:leading-[1.8] font-normal text-[var(--color-text-secondary)] w-full max-w-6xl mx-auto">
           
-          <div className="space-y-6 sm:space-y-12 w-full">
+          <div className="space-y-6 sm:space-y-12 w-full" id="forge">
             <h2 className="text-2xl sm:text-5xl md:text-6xl font-black uppercase text-[var(--color-accent)] tracking-wider font-mono break-words">
               // THE_FORGE: FROM BUTTON PHONES TO GLOBAL INFRASTRUCTURE
             </h2>
@@ -121,7 +145,7 @@ export const Manifesto = () => {
             </div>
           </div>
 
-          <div className="space-y-6 sm:space-y-12 bg-zinc-900/40 p-5 sm:p-12 rounded-2xl sm:rounded-3xl border border-zinc-800/50 w-full">
+          <div className="space-y-6 sm:space-y-12 bg-zinc-900/40 p-5 sm:p-12 rounded-2xl sm:rounded-3xl border border-zinc-800/50 w-full" id="isolation">
             <h2 className="text-2xl sm:text-5xl md:text-6xl font-black uppercase text-[var(--color-accent)] tracking-wider font-mono break-words">
               // THE_ISOLATION: S.3 DROPOUT & THE MADMAN'S FORGE
             </h2>
@@ -136,7 +160,7 @@ export const Manifesto = () => {
             </p>
           </div>
 
-          <div className="space-y-6 sm:space-y-12 w-full">
+          <div className="space-y-6 sm:space-y-12 w-full" id="proclamation">
             <h2 className="text-2xl sm:text-5xl md:text-6xl font-black uppercase text-[var(--color-accent)] tracking-wider font-mono break-words">
               // THE_PROCLAMATION: GRADES DO NOT BUILD MONUMENTS
             </h2>
@@ -148,22 +172,22 @@ export const Manifesto = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-16 pt-4 sm:pt-8 w-full">
             <div className="bg-zinc-900/80 border border-zinc-800 sm:border-2 p-6 sm:p-14 rounded-2xl sm:rounded-3xl space-y-4 sm:space-y-6 shadow-[0_10px_40px_rgba(0,0,0,0.5)] w-full">
               <div className="text-[10px] sm:text-sm uppercase tracking-widest font-mono text-[var(--color-accent)] font-black break-words">// SYSTEM_ALPHA: THE_CRUCIBLE</div>
-              <h3 className="text-2xl sm:text-5xl font-black uppercase tracking-tight text-white break-words">Cymatic Hub</h3>
-              <p className="text-zinc-300 text-base sm:text-2xl font-normal leading-relaxed break-words">
-                <strong>Cymatic Hub</strong> is a monumental study application for institutions, teachers, and students to synchronize in absolute work harmony. 
+              <h3 className="text-2xl sm:text-5xl font-black uppercase tracking-tight text-white break-words">Cymatic Study</h3>
+              <p className="text-[var(--color-text-secondary)] text-base sm:text-2xl font-normal leading-relaxed break-words">
+                <strong>Cymatic Study</strong> is a monumental study application for institutions, teachers, and students to synchronize in absolute work harmony. 
               </p>
             </div>
 
             <div className="bg-zinc-900/80 border border-zinc-800 sm:border-2 p-6 sm:p-14 rounded-2xl sm:rounded-3xl space-y-4 sm:space-y-6 shadow-[0_10px_40px_rgba(0,0,0,0.5)] w-full">
               <div className="text-[10px] sm:text-sm uppercase tracking-widest font-mono text-[var(--color-accent)] font-black break-words">// SYSTEM_OMEGA: THE_LEDGER</div>
               <h3 className="text-2xl sm:text-5xl font-black uppercase tracking-tight text-white break-words">Cymatic Resonance</h3>
-              <p className="text-zinc-300 text-base sm:text-2xl font-normal leading-relaxed break-words">
+              <p className="text-[var(--color-text-secondary)] text-base sm:text-2xl font-normal leading-relaxed break-words">
                 <strong>Cymatic Resonance</strong> operates as an unalterable institutional register and live attendance monitor. 
               </p>
             </div>
           </div>
 
-          <div className="pt-10 sm:pt-24 text-center w-full max-w-5xl mx-auto space-y-8 sm:space-y-12">
+          <div className="pt-10 sm:pt-24 text-center w-full max-w-5xl mx-auto space-y-8 sm:space-y-12" id="pledge">
             <h2 className="text-xl sm:text-4xl md:text-5xl font-black uppercase text-white tracking-widest font-mono border-b border-zinc-800 pb-4 sm:pb-8 break-words">
               // THE_GLOBAL_PLEDGE
             </h2>
@@ -180,12 +204,25 @@ export const Manifesto = () => {
               </button>
             </div>
             
-            <p className="text-base sm:text-2xl text-zinc-300 leading-relaxed text-left sm:text-center break-words">
+            <p className="text-base sm:text-2xl text-[var(--color-text-secondary)] leading-relaxed text-left sm:text-center break-words">
               If this manifesto found you at your breaking point, I pray it retrieves your lost heart and mind. Prioritize wisely and let the will of ALLAH be the ground you rest on. It takes time. Invest patience and keep pushing.
             </p>
             <p className="text-lg sm:text-3xl font-black text-[var(--color-accent)] tracking-widest">
               PRAYER . DISCIPLINE . CONSISTENCY . SELF-ESTEEM. 
             </p>
+
+            <div className="pt-12 sm:pt-24 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+              <Link to="/study" className="group p-8 border border-zinc-800 rounded-3xl bg-zinc-950/50 hover:border-[var(--color-accent)] transition-all">
+                <span className="text-[10px] font-mono text-[var(--color-accent)] block mb-4">// NEXT_PHASE_01</span>
+                <h4 className="text-2xl font-bold mb-2">Explore the Study Nexus ↗</h4>
+                <p className="text-sm text-[var(--color-text-secondary)]">The educational synchronization engine built on these principles.</p>
+              </Link>
+              <Link to="/resonance" className="group p-8 border border-zinc-800 rounded-3xl bg-zinc-950/50 hover:border-[var(--color-accent)] transition-all">
+                <span className="text-[10px] font-mono text-[var(--color-accent)] block mb-4">// NEXT_PHASE_02</span>
+                <h4 className="text-2xl font-bold mb-2">Monitor the Resonance ↗</h4>
+                <p className="text-sm text-[var(--color-text-secondary)]">Live attendance and institutional pulse monitoring in real-time.</p>
+              </Link>
+            </div>
           </div>
         </section>
 

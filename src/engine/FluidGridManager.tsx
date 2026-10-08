@@ -27,6 +27,7 @@ export const useFluidGridManager = () => {
       }
     });
 
+    if (!document.body) return;
     observer.observe(document.body);
 
     return () => observer.disconnect();

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from 'react';
 
 // The 'frequency' represents the site's "breathing rate" (pulse speed).

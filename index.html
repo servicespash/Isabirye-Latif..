@@ -2,12 +2,80 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Gracefully handle environments (like sandboxed iframes or test runners) where
+      // third-party scripts or extensions attempt to override window.fetch,
+      // preventing crashes due to read-only getters.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var currentFetch = originalFetch;
+          
+          function setupGetterSetter(obj, prop) {
+            var desc = Object.getOwnPropertyDescriptor(obj, prop);
+            if (!desc || desc.configurable) {
+              Object.defineProperty(obj, prop, {
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val || originalFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+              return true;
+            }
+            return false;
+          }
+
+          // Try defining on window directly first
+          var success = setupGetterSetter(window, 'fetch');
+          
+          // If not successful or to be safe, also try Window.prototype
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            setupGetterSetter(Window.prototype, 'fetch');
+          }
+        } catch (e) {
+          console.warn("Window fetch override guard active:", e);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cymatic Hub | Institutional Sovereign Infrastructure</title>
+    <meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE_HERE" />
+    <meta name="description" content="Cymatic Study is an institutional sovereign infrastructure, educational platform, and showcase of creative portfolios detailing cymatic research, research papers, and responsive design systems." />
+    <meta name="keywords" content="Cymatic Study, Cymatic Hub, Sovereign Infrastructure, Cymatic Research, Creative Portfolio, Responsive Templates, Scientific Art, Frequency Studies" />
+    <title>Cymatic Study | Institutional Sovereign Infrastructure</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cymatichub.xyz/#organization",
+          "name": "Cymatic Study",
+          "url": "https://cymatichub.xyz",
+          "logo": "https://cymatichub.xyz/apple-touch-icon.png",
+          "description": "Institutional sovereign infrastructure, cymatic study research platform, and showcase of creative responsive systems."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cymatichub.xyz/#website",
+          "name": "Cymatic Study | Institutional Sovereign Infrastructure",
+          "url": "https://cymatichub.xyz",
+          "description": "Exploration of cymatic science, institutional branding, and responsive high-performance digital templates."
+        }
+      ]
+    }
+    </script>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="preload" href="/src/main.tsx" as="script" type="module" />
+    <meta name="theme-color" content="#050505" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     
     <style>
       body { 
-        background-color: #050505 !important; 
         margin: 0; 
       }
     </style>

@@ -1,0 +1,8 @@
+{
+  "name": "Cymatic Study",
+  "description": "Institutional sovereign infrastructure, cymatic study, and creative portfolio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

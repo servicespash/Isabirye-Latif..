@@ -12,7 +12,7 @@ export const useDocumentMetadata = () => {
 
     document.title = currentNode 
       ? `Cymatic | ${currentNode.title}` 
-      : 'Cymatic Hub';
+      : 'Cymatic Study';
 
     // Update Meta Description
     let metaDescription = document.querySelector('meta[name="description"]');

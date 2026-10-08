@@ -3,20 +3,47 @@ import { CymaticLayout } from '../components/CymaticLayout';
 export const Socials = () => {
   return (
     <CymaticLayout>
-      <main className="w-full py-12 px-6">
-        <div className="max-w-4xl mx-auto border border-[var(--color-border)] rounded-3xl bg-black/[0.01] dark:bg-white/[0.01] backdrop-blur-md p-12">
+      <div className="space-y-12">
+        <div className="border-b border-[var(--color-border)] pb-8">
           <span className="text-[10px] font-mono tracking-[0.3em] text-[var(--color-accent)] block mb-2">// COORD_SOCIAL_ACTIVE</span>
-          <h1 className="text-4xl font-mono font-bold uppercase tracking-tight text-[var(--color-text-primary)] mb-4">Uplink Gateway</h1>
-          <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
-            Direct operational command pipelines to the architect's secure communication links.
+          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-[var(--color-text-primary)]">Uplink Gateway</h1>
+          <p className="mt-4 text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-2xl">
+            Direct operational command pipelines to the architect's secure communication links. Use these tunnels for verified coordination.
           </p>
-          <div className="flex flex-col gap-2 max-w-xs text-xs font-mono">
-            <a href="https://wa.me/#" target="_blank" rel="noreferrer" className="p-3 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)] transition-all">// SECURE_WHATSAPP</a>
-            <a href="https://youtube.com/#" target="_blank" rel="noreferrer" className="p-3 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)] transition-all">// PRODUCTION_YOUTUBE</a>
-            <a href="https://tiktok.com/#" target="_blank" rel="noreferrer" className="p-3 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)] transition-all">// STREAM_TIKTOK</a>
-          </div>
         </div>
-      </main>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs max-w-4xl">
+          <a 
+            href="https://wa.me/256768715065" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="p-6 border border-[var(--color-border)] rounded-2xl bg-black/5 dark:bg-white/5 hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 transition-all duration-300 flex flex-col justify-between h-36"
+          >
+            <span className="text-[9px] text-[var(--color-text-secondary)]">// WHATSAPP_TUNNEL</span>
+            <span className="text-sm font-bold text-[var(--color-text-primary)] mt-auto">// CONNECT_SECURE_WA ↗</span>
+          </a>
+
+          <a 
+            href="https://youtube.com/@laty_adams" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="p-6 border border-[var(--color-border)] rounded-2xl bg-black/5 dark:bg-white/5 hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 transition-all duration-300 flex flex-col justify-between h-36"
+          >
+            <span className="text-[9px] text-[var(--color-text-secondary)]">// YOUTUBE_STREAM</span>
+            <span className="text-sm font-bold text-[var(--color-text-primary)] mt-auto">// VIEW_BROADCASTS ↗</span>
+          </a>
+
+          <a 
+            href="https://tiktok.com/@laty_adams" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="p-6 border border-[var(--color-border)] rounded-2xl bg-black/5 dark:bg-white/5 hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 transition-all duration-300 flex flex-col justify-between h-36"
+          >
+            <span className="text-[9px] text-[var(--color-text-secondary)]">// TIKTOK_FEED</span>
+            <span className="text-sm font-bold text-[var(--color-text-primary)] mt-auto">// TRACK_FEED ↗</span>
+          </a>
+        </div>
+      </div>
     </CymaticLayout>
   );
 };

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { CymaticLayout } from '../components/CymaticLayout';
 
+const STATIC_HEIGHTS = [45, 80, 20, 60, 95, 30, 75, 40, 85, 50, 90, 15, 65, 35, 70, 55, 100, 25, 80, 40];
+
 export const Creative = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -14,12 +16,12 @@ export const Creative = () => {
 
         {/* Interactive Wave Simulation */}
         <div className="flex flex-col items-center gap-8">
-          <div className="grid grid-cols-20 gap-1 h-32 items-end w-full max-w-2xl">
+          <div className="flex justify-between items-end gap-1.5 h-32 w-full max-w-2xl">
               {[...Array(20)].map((_, i) => (
                   <div 
                     key={i} 
-                    className={`w-full transition-all duration-300 ${isPlaying ? 'bg-[var(--color-accent)] animate-pulse' : 'bg-[var(--color-border)]'}`} 
-                    style={{ height: isPlaying ? `${Math.random() * 100}%` : '10%' }} 
+                    className={`flex-1 rounded-t-sm transition-all duration-300 ${isPlaying ? 'bg-[var(--color-accent)] animate-pulse' : 'bg-[var(--color-border)]'}`} 
+                    style={{ height: isPlaying ? `${STATIC_HEIGHTS[i]}%` : '10%' }} 
                   />
               ))}
           </div>

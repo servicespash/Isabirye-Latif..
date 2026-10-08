@@ -17,9 +17,12 @@ export const SystemHeartbeat: React.FC = () => {
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
-    setTrigger(true);
-    const timer = setTimeout(() => setTrigger(false), 300);
-    return () => clearTimeout(timer);
+    const startTimer = setTimeout(() => setTrigger(true), 0);
+    const endTimer = setTimeout(() => setTrigger(false), 300);
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(endTimer);
+    };
   }, [location]);
 
   return (

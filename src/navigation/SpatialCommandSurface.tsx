@@ -65,10 +65,28 @@ export const SpatialCommandSurface: React.FC<SpatialCommandSurfaceProps> = ({ is
           <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Socials</h3>
         </Link>
 
-        {/* SHOWCASE */}
-        <Link to="/showcase" onClick={onClose} className="group p-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/30 hover:border-[#00f2fe] transition-all duration-500">
+        {/* CYMATIC STUDY */}
+        <Link to="/study" onClick={onClose} className="group p-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/30 hover:border-[#00f2fe] transition-all duration-500">
           <div className="text-[9px] font-mono text-[#00f2fe] mb-2 tracking-widest">// NODE_07</div>
-          <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Showcase</h3>
+          <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Cymatic Study</h3>
+        </Link>
+
+        {/* CYMATIC RESONANCE */}
+        <Link to="/resonance" onClick={onClose} className="group p-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/30 hover:border-[#a855f7] transition-all duration-500">
+          <div className="text-[9px] font-mono text-[#a855f7] mb-2 tracking-widest">// NODE_08</div>
+          <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Cymatic Resonance</h3>
+        </Link>
+
+        {/* TWIN ENGINES */}
+        <Link to="/twin-engines" onClick={onClose} className="group p-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/30 hover:border-[#00f2fe] transition-all duration-500">
+          <div className="text-[9px] font-mono text-[#00f2fe] mb-2 tracking-widest">// NODE_09</div>
+          <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Twin Engines</h3>
+        </Link>
+
+        {/* SETTINGS */}
+        <Link to="/settings" onClick={onClose} className="group p-8 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/30 hover:border-[#f59e0b] transition-all duration-500">
+          <div className="text-[9px] font-mono text-[#f59e0b] mb-2 tracking-widest">// NODE_10</div>
+          <h3 className="text-2xl font-bold uppercase tracking-wider text-[var(--color-text-primary)] group-hover:translate-x-2 transition-transform duration-300">Settings</h3>
         </Link>
       </div>
 

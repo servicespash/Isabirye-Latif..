@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'motion/react';
 import { useMotionPulse } from '../context/MotionContext';
 import { useFluidGridManager } from '../engine/FluidGridManager';
 
@@ -13,7 +13,7 @@ export const Card: React.FC<CardProps> = ({ title, category, description }) => {
   const { globalFrequency } = useMotionPulse();
   const { resonance } = useFluidGridManager();
 
-  const pulseVariants: any = {
+  const pulseVariants: Variants = {
     animate: {
       scale: [1, 1.008, 1],
       transition: {

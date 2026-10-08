@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const focuses = [
-  'Architecting: Cymatic Hub',
+  'Architecting: Cymatic Study',
   'Studying: Counselling',
   'Creating: Celestial Fantasy'
 ];

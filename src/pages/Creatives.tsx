@@ -60,7 +60,7 @@ export const Creatives = () => {
           <p className="mt-4 text-sm sm:text-base text-[var(--color-text-secondary)] font-sans max-w-4xl leading-relaxed">
             Where sonic energy scales into digital infrastructure. Raw outputs are forged at the intersection of grit, 
             low-light visual exploration, and clean code—acting as the testing ground for the user-experience models 
-            powering <strong className="text-[var(--color-text-primary)]">Cymatic Hub</strong> and <strong className="text-[var(--color-text-primary)]">Cymatic Resonance</strong>.
+            powering <strong className="text-[var(--color-text-primary)]">Cymatic Study</strong> and <strong className="text-[var(--color-text-primary)]">Cymatic Resonance</strong>.
           </p>
         </header>
 
@@ -121,8 +121,8 @@ export const Creatives = () => {
                   >
                     <div className="flex justify-between items-start gap-2 mb-2">
                       <div className="min-w-0">
-                        <span className="text-[9px] text-slate-500 block uppercase tracking-tight truncate">{node.systemCode}</span>
-                        <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide truncate">{node.title}</h4>
+                        <span className="text-[9px] text-[var(--color-text-secondary)]/70 block uppercase tracking-tight truncate">{node.systemCode}</span>
+                        <h4 className="text-xs sm:text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wide truncate">{node.title}</h4>
                       </div>
                       <span className="text-xs font-mono font-bold text-[#FDE047] bg-[#FDE047]/10 px-2 py-0.5 shrink-0">{node.metricValue}%</span>
                     </div>
@@ -136,10 +136,10 @@ export const Creatives = () => {
 
                     {focusedNode === node.id && (
                       <div className="mt-4 pt-4 border-t border-dashed border-[var(--color-border)] animate-fadeIn">
-                        <p className="text-xs text-slate-400 font-sans leading-relaxed mb-4 break-words">{node.narrative}</p>
+                        <p className="text-xs text-[var(--color-text-secondary)] font-sans leading-relaxed mb-4 break-words">{node.narrative}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {node.specifications.map((spec, i) => (
-                            <span key={i} className="text-[8px] bg-black/60 border border border-[var(--color-border)] text-slate-400 px-2 py-0.5 uppercase">
+                            <span key={i} className="text-[8px] bg-black/60 border border-[var(--color-border)] text-[var(--color-text-secondary)] px-2 py-0.5 uppercase">
                               #{spec}
                             </span>
                           ))}

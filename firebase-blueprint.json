@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "stats": {
+      "title": "Site Stats",
+      "description": "Global site statistics",
+      "type": "object",
+      "properties": {
+        "visitors": { "type": "number" },
+        "views": { "type": "number" },
+        "downloads": { "type": "number" }
+      },
+      "required": ["visitors", "views", "downloads"]
+    },
+    "inquiry": {
+      "title": "Sovereign Inquiry",
+      "description": "User feedback and inquiries submitted through the portal",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "category": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "category", "message", "createdAt"]
+    },
+    "projectMetrics": {
+      "title": "Project Metrics",
+      "description": "Statistics for each project",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string" },
+        "linesOfCode": { "type": "number" },
+        "timeInvestedHours": { "type": "number" }
+      },
+      "required": ["projectId", "linesOfCode", "timeInvestedHours"]
+    },
+    "downloadLog": {
+      "title": "Download Log",
+      "description": "Log of application downloads",
+      "type": "object",
+      "properties": {
+        "appType": { "type": "string" },
+        "version": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["appType", "version", "timestamp"]
+    },
+    "compliance": {
+      "title": "Compliance Metrics",
+      "description": "System compliance auditing metrics",
+      "type": "object",
+      "properties": {
+        "accessibility": { "type": "number" },
+        "security": { "type": "number" },
+        "transparency": { "type": "number" },
+        "lastAudit": { "type": "string" }
+      },
+      "required": ["accessibility", "security", "transparency", "lastAudit"]
+    },
+    "templateRating": {
+      "title": "Template Rating",
+      "description": "User ratings for templates",
+      "type": "object",
+      "properties": {
+        "templateId": { "type": "string" },
+        "rating": { "type": "number" },
+        "userId": { "type": "string" }
+      },
+      "required": ["templateId", "rating", "userId"]
+    },
+    "interaction": {
+      "title": "User Interaction Log",
+      "description": "Logged interactive element actions",
+      "type": "object",
+      "properties": {
+        "elementId": { "type": "string" },
+        "action": { "type": "string" },
+        "count": { "type": "number" },
+        "lastUpdated": { "type": "string" }
+      },
+      "required": ["elementId", "action", "count", "lastUpdated"]
+    },
+    "pageView": {
+      "title": "Page View Log",
+      "description": "Log of page navigation and viewing statistics",
+      "type": "object",
+      "properties": {
+        "pageId": { "type": "string" },
+        "templateId": { "type": "string" },
+        "timestamp": { "type": "object", "description": "Server timestamp" },
+        "userAgent": { "type": "string" },
+        "screenSize": { "type": "string" }
+      },
+      "required": ["pageId", "templateId", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/siteStats/global": {
+      "schema": "stats",
+      "description": "Global site statistics"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "inquiry",
+      "description": "Ecosystem inquiries and sovereign user feedback"
+    },
+    "/projectMetrics/{projectId}": {
+      "schema": "projectMetrics",
+      "description": "Project-specific statistics"
+    },
+    "/downloads/{downloadId}": {
+      "schema": "downloadLog",
+      "description": "Log of application downloads"
+    },
+    "/compliance/{complianceId}": {
+      "schema": "compliance",
+      "description": "Accessibility, security and transparency compliance scores"
+    },
+    "/templateRatings/{ratingId}": {
+      "schema": "templateRating",
+      "description": "User ratings for templates"
+    },
+    "/interactions/{interactionId}": {
+      "schema": "interaction",
+      "description": "Interactions tracking logs"
+    },
+    "/analytics_page_views/{viewId}": {
+      "schema": "pageView",
+      "description": "Page view tracking for analytics"
+    }
+  }
+}

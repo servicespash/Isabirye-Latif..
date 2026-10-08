@@ -10,6 +10,7 @@ export const KineticRail: React.FC = () => (
           <Link to="/">Home</Link>
           <Link to="/manifesto">Origin</Link>
           <Link to="/projects">Projects</Link>
+          <Link to="/showcase">Showcase</Link>
           <Link to="/creatives">Creatives</Link>
           <Link to="/learning">Learning</Link>
           <Link to="/socials">Socials</Link>

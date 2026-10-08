@@ -1,12 +1,203 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+import { useAppContext } from '../hooks/useAppContext';
+import templatesData from '../data/templates.json';
 
-export const CymaticSEO: React.FC = () => {
-  const siteName = "Cymatic Evolution";
+interface CymaticSEOProps {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+  googleSiteVerification?: string;
+  jsonLd?: Record<string, any>;
+}
+
+interface RouteSEOConfig {
+  title: string;
+  description: string;
+  keywords: string;
+  ogType?: string;
+  pageName: string;
+}
+
+const SEO_ROUTING_MATRIX: Record<string, RouteSEOConfig> = {
+  '/': {
+    pageName: 'Home',
+    title: 'Isabirye Latif | Solo Architect | Cymatic Engines Evolution',
+    description: 'Official portal of Isabirye Latif (Latty Adams). Architecting Cymatic Engines Evolution - High-performance digital infrastructure, premium website templates, and institutional synchronization systems.',
+    keywords: 'Isabirye Latif, Latty Adams, Cymatic Engines Evolution, Solo Architect, Cymatic Study, Cymatic Resonance, Premium Website Templates, Web Architecture Uganda, Institutional Infrastructure',
+  },
+  '/manifesto': {
+    pageName: 'Origin & Manifesto',
+    title: 'Origin & Manifesto | Cymatic Engines Evolution | Isabirye Latif',
+    description: 'The monumental manifesto of Isabirye Latif. Exploring the architectural resilience and technical origins of the Cymatic Engines Evolution ecosystem.',
+    keywords: 'Manifesto, Isabirye Latif, Architecture of Resilience, Cymatic Evolution, Solo Architect Vision, Digital Sovereignty',
+  },
+  '/projects': {
+    pageName: 'Projects',
+    title: 'Projects & Architecture | Isabirye Latif',
+    description: 'Proof of work, core systems architecture, PDF Engine, and technical solutions built for high-performance scale, optimized for modern browsers and institutional-grade deployments.',
+    keywords: 'Software Engineering, Projects, Kampala Tech, PDF Engine, Sci-Matic, Proof of Work',
+  },
+  '/showcase': {
+    pageName: 'Template Showcase',
+    title: 'Website Templates | Isabirye Latif Design Portfolio & Gallery',
+    description: 'Explore a premium gallery of professional website templates and interactive client showcase previews designed by Solo Architect Isabirye Latif. High-performance, scalable web architecture for business, education, portfolios, and enterprise needs.',
+    keywords: 'Website Templates, Design Portfolio, Simulator, Nextjs, React, Tailwind, School Template, Business Template, Isabirye Latif, Solo Architect, Web Design, Web Architecture, Enterprise Solutions, High Performance Web',
+  },
+  '/resonance': {
+    pageName: 'Cymatic Resonance',
+    title: 'Cymatic Resonance | Real-Time Attendance & Orchestration',
+    description: 'Experience Cymatic Resonance - the institutional heartbeat. Precision-engineered for live team coordination and attendance tracking. Download the official Cymatic Resonance App.',
+    keywords: 'Cymatic Resonance, Attendance Tracker, Live Orchestration, APK Download, Enterprise Sync, resonance.cymatichub.xyz',
+  },
+  '/study': {
+    pageName: 'Cymatic Study Portal',
+    title: 'Cymatic Study | Educational Synchronization Dashboard',
+    description: 'Access the Cymatic Study operational dashboard. PBL project tracking, AI-tutored study guides, and real-time school system charts designed for high-performing educational institutions.',
+    keywords: 'Cymatic Study, PBL Tracking, AI Tutor, Education Dashboard, Study Monitor, Kampala EdTech',
+  },
+  '/learning': {
+    pageName: 'Learning & Mastery',
+    title: 'Continuous Learning & Mastery | Isabirye Latif',
+    description: 'The continuous evolution of professional skills across counseling, psychology, organizational human resources, and technical engineering. Dedicated to perpetual learning and mastery.',
+    keywords: 'Counselling, Human Resources, Continuous Education, Skill Matrix, Professional Mastery',
+  },
+  '/creatives': {
+    pageName: 'Creative Execution',
+    title: 'Creative Execution Labs | Isabirye Latif',
+    description: 'Where sonic reggae-soul frequencies, nocturnal low-light imagery, and tactical spatial biometrics converge with production-ready software development and creative artistic expression.',
+    keywords: 'Ghetto Anthem, Creative Lab, Reggae Soul, Low-light Photography, Spatial Biometrics, Kampala Music',
+  },
+  '/creative': {
+    pageName: 'Interactive Sonic Lab',
+    title: 'Interactive Sonic Lab | Cymatic Resonance Simulator',
+    description: 'Interact with the real-time sonic frequency wave generator and live telemetry feed calibrated for Ghetto Anthem. Designed for exploring production-ready interactive sonic experiences.',
+    keywords: 'Wave Simulator, Sonic Lab, Frequency Modulation, Telemetry, Web Audio',
+  },
+  '/socials': {
+    pageName: 'Uplink Gateway',
+    title: 'Uplink Gateway & Contact | Isabirye Latif',
+    description: 'Direct communication pipelines to Isabirye Latif\'s secure WhatsApp, YouTube production streams, and TikTok channels. Get connected and explore the evolution of the digital architecture.',
+    keywords: 'Contact, Social Links, WhatsApp, YouTube, TikTok, Uplink, Connect',
+  },
+  '/stack': {
+    pageName: 'Stack Audit',
+    title: 'Stack Audit & Technology Ledger | Cymatic Evolution',
+    description: 'Deep structural audit of the modern, ultra-resilient tech stack powering cymatichub.xyz. Built with React 19, TypeScript, and Tailwind CSS for unparalleled performance and scale.',
+    keywords: 'Tech Stack, React 19, Tailwind, Audit, Vite, Architecture, Software Systems',
+  },
+  '/legal': {
+    pageName: 'Compliance Protocol',
+    title: 'Compliance Protocol & Trust | Cymatic Evolution',
+    description: 'Learn about our client-bound local-storage privacy model, absolute data sovereignty, and security integrity, ensuring all user data is protected, secure, and fully private at all times.',
+    keywords: 'Privacy Policy, Data Sovereignty, Local Storage, Compliance, GDPR, Uganda Privacy',
+  },
+  '/transparency': {
+    pageName: 'System Transparency',
+    title: 'System Transparency & Live Telemetry | Cymatic Evolution',
+    description: 'Real-time system health logs, sync-pulse rates, and live operational status metrics of the Cymatic Evolution network. Transparent, open, and deeply optimized for high performance.',
+    keywords: 'Telemetry, Live Logs, Network Status, System Health, Node Status, Transparency',
+  },
+  '/for-schools': {
+    pageName: 'For Schools',
+    title: 'Cymatic Study for Schools | Educational Ecosystems',
+    description: 'Empower your institution with Cymatic Study, transforming educational delivery into synchronized learning ecosystems designed for compliance, performance, and institutional success at scale.',
+    keywords: 'Cymatic Study, Schools, EdTech, Learning Ecosystem, School Sync',
+  },
+  '/for-teams': {
+    pageName: 'For Teams',
+    title: 'Cymatic Study for Teams | Organizational Synchronization',
+    description: 'Precision-engineered orchestration for agile teams. Coordinate projects, track progress, and foster seamless collaboration with Cymatic Study, designed for high-output teams.',
+    keywords: 'Cymatic Study, Teams, Organizational Sync, Coordination, Project Tracking',
+  },
+  '/how-it-works': {
+    pageName: 'How It Works',
+    title: 'How It Works | Cymatic Evolution Architecture',
+    description: 'Understanding the operational mechanics of Cymatic Study and Resonance, showcasing how high-performance architecture bridges the gap between complex challenges and elegant software.',
+    keywords: 'How It Works, Architecture, Mechanics, Cymatic Study, Resonance',
+  },
+  '/twin-engines': {
+    pageName: 'Twin Engines',
+    title: 'Twin Engines | Cymatic Study & Resonance Orchestration',
+    description: 'Orchestrating education and organizational telemetry with Twin Engines: Cymatic Study and Resonance. A combined technical approach to building cohesive, high-performance digital environments.',
+    keywords: 'Twin Engines, Cymatic Study, Resonance, Orchestration, Telemetry',
+  },
+};
+
+export const CymaticSEO: React.FC<CymaticSEOProps> = ({
+  title,
+  description,
+  keywords,
+  ogImage,
+  ogType,
+  googleSiteVerification,
+  jsonLd,
+}) => {
+  const { branding } = useAppContext();
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const verificationCode = googleSiteVerification || import.meta.env.VITE_GOOGLE_SITE_VERIFICATION;
+
+  const siteName = branding.name;
   const fullName = "Isabirye Latif (Latty Adams)";
   const jobTitle = "Solo Architect & Resonance Engineer";
   const baseUrl = "https://cymatichub.xyz";
-  const imageUrl = `${baseUrl}/media/photo3.png`;
+  const defaultImageUrl = `${baseUrl}/media/photo3.png`;
+
+  // Determine current metadata from route configuration or default to general homepage
+  let routeConfig = SEO_ROUTING_MATRIX[pathname];
+  let activeTemplate: any = null;
+
+  if (!routeConfig) {
+    const templateMatch = pathname.match(/^\/(showcase|template)\/([^/]+)$/);
+    if (templateMatch) {
+      const templateId = templateMatch[2];
+      activeTemplate = templatesData.find((t: any) => t.id === templateId);
+      if (activeTemplate) {
+        routeConfig = {
+          pageName: activeTemplate.title,
+          title: `${activeTemplate.title} | Template Browser | Isabirye Latif`,
+          description: activeTemplate.description,
+          keywords: `${activeTemplate.title}, ${activeTemplate.category}, ${activeTemplate.industry}, Website Template, Isabirye Latif`,
+        };
+      }
+    }
+  }
+
+  if (!routeConfig) {
+    routeConfig = SEO_ROUTING_MATRIX['/'];
+  }
+
+  const finalTitle = title || routeConfig.title;
+  const finalDescription = description || routeConfig.description;
+  const finalKeywords = keywords || `${routeConfig.keywords}, ${siteName}, ${fullName}`;
+  const finalOgImage = ogImage || (activeTemplate ? `${baseUrl}${activeTemplate.image}` : defaultImageUrl);
+  const finalOgType = ogType || routeConfig.ogType || 'website';
+  const finalCanonicalUrl = `${baseUrl}${pathname}`;
+
+  // Structured Data (JSON-LD) Breadcrumbs & Person Profile Graph
+  const breadcrumbElement: Record<string, any>[] = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": baseUrl,
+    },
+  ];
+
+  if (pathname !== '/') {
+    breadcrumbElement.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": routeConfig.pageName,
+      "item": finalCanonicalUrl,
+    });
+  }
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -18,45 +209,110 @@ export const CymaticSEO: React.FC = () => {
         "alternateName": "Latty Adams",
         "jobTitle": jobTitle,
         "url": baseUrl,
-        "sameAs": ["https://github.com/servicespash"]
+        "sameAs": [
+          "https://github.com/servicespash",
+          "https://youtube.com/#",
+          "https://tiktok.com/#"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": branding.name,
+          "url": baseUrl
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${baseUrl}/#organization`,
+        "name": branding.name,
+        "url": baseUrl,
+        "description": "Architecting high-performance web templates, systems, and institutional digital infrastructure.",
+        "founder": {
+          "@id": `${baseUrl}/#founder`
+        },
+        "sameAs": [
+          "https://github.com/servicespash"
+        ]
       },
       {
         "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Cymatic Hub", "item": `${baseUrl}/hub` },
-          { "@type": "ListItem", "position": 2, "name": "Cymatic Resonance", "item": `${baseUrl}/resonance` }
-        ]
-      }
+        "itemListElement": breadcrumbElement
+      },
+      // Course & Organization Schema Support
+      {
+        "@type": "Organization",
+        "name": "Cymatic Engines Evolution",
+        "url": baseUrl,
+        "logo": `${baseUrl}/logo.png`
+      },
+      {
+        "@type": "Course",
+        "name": "Cymatic Architectural Systems",
+        "description": "High-performance digital infrastructure and institutional synchronization.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Cymatic Engines Evolution",
+          "sameAs": baseUrl
+        }
+      },
+      // Merge page-specific Custom JSON-LD if provided
+      ...(jsonLd ? [jsonLd] : []),
+      ...(activeTemplate ? [{
+        "@type": "SoftwareApplication",
+        "@id": `${baseUrl}${pathname}/#software`,
+        "name": activeTemplate.title,
+        "description": activeTemplate.description,
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "All",
+        "url": `${baseUrl}${pathname}`,
+        "screenshot": `${baseUrl}${activeTemplate.image}`,
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        }
+      }] : [])
     ]
   };
 
   return (
     <Helmet>
       <html lang="en" />
-      <title>{fullName} | {jobTitle} | {siteName}</title>
+      <title>{finalTitle}</title>
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <link rel="canonical" href={baseUrl} />
+      <link rel="canonical" href={finalCanonicalUrl} />
       
-      <meta name="description" content={`Official portal of ${fullName}. Solo Architect of the Cymatic Evolution. Engineering Cymatic Hub and Cymatic Resonance for institutional synchronization and project-based learning.`} />
-      <meta name="keywords" content="Isabirye Latif, Latty Adams, Cymatic Hub, Cymatic Resonance, Solo Architect, Resonance Engineer, EdTech, Project-Based Learning, Kampala Tech, AI Institutional Systems" />
+      <meta name="description" content={finalDescription} />
+      <meta name="keywords" content={finalKeywords} />
       
-      <meta property="og:title" content={`${fullName} | ${jobTitle}`} />
-      <meta property="og:description" content="Engineering high-resilience software systems. Bridging factory-floor grit with global AI infrastructure." />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={baseUrl} />
-      <meta property="og:image" content={imageUrl} />
+      {/* OpenGraph Tags */}
       <meta property="og:site_name" content={siteName} />
+      <meta property="og:title" content={finalTitle} />
+      <meta property="og:description" content={finalDescription} />
+      <meta property="og:type" content={finalOgType} />
+      <meta property="og:url" content={finalCanonicalUrl} />
+      <meta property="og:image" content={finalOgImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:locale" content="en_US" />
       
+      {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullName} />
-      <meta name="twitter:description" content={jobTitle} />
-      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:site" content="@lattyadams" />
+      <meta name="twitter:creator" content="@lattyadams" />
+      <meta name="twitter:title" content={finalTitle} />
+      <meta name="twitter:description" content={finalDescription} />
+      <meta name="twitter:image" content={finalOgImage} />
       
       <meta name="author" content={fullName} />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
+      {verificationCode && <meta name="google-site-verification" content={verificationCode} />}
+      
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}
       </script>
     </Helmet>
   );
 };
+

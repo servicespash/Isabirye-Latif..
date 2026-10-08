@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useMotionPulse } from '../context/MotionContext';
 import { useFluidGridManager } from '../engine/FluidGridManager';
 import { getHeroPortrait } from '../engine/PortraitRegistry';

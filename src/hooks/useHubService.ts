@@ -1,18 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Project, ChatMessage } from '../types/Hub';
 import { monitorChatContent } from '../services/AIService';
 
 export const useHubService = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>([
+    { id: 'p1', title: 'Cellular Respiration Analysis', subject: 'Biology', classLevel: 'S3', description: 'Detailed breakdown of metabolic pathways.', deadline: '2026-07-01' },
+    { id: 'p2', title: 'Kinetic Energy Equations', subject: 'Physics', classLevel: 'S3', description: 'Calculate velocity and force vectors.', deadline: '2026-07-05' }
+  ]);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
-
-  // Simulate fetching data
-  useEffect(() => {
-    setProjects([
-      { id: 'p1', title: 'Cellular Respiration Analysis', subject: 'Biology', classLevel: 'S3', description: 'Detailed breakdown of metabolic pathways.', deadline: '2026-07-01' },
-      { id: 'p2', title: 'Kinetic Energy Equations', subject: 'Physics', classLevel: 'S3', description: 'Calculate velocity and force vectors.', deadline: '2026-07-05' }
-    ]);
-  }, []);
 
   const sendMessage = (content: string) => {
     const newMessage: ChatMessage = { id: Date.now().toString(), sender: 'student', content, timestamp: new Date() };
