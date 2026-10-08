@@ -3,31 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apex Venture is a leading executive advisory and capital strategy firm. We partner with elite enterprises to structure scalable architecture and accelerate venture growth.">
-    <meta name="keywords" content="Apex Venture, Executive Advisory, Capital Strategy, Venture Growth, Enterprise Architecture, Corporate Finance, Portfolio Management">
     <title>Apex Venture | Executive Advisory & Strategy</title>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://cymatichub.xyz/template/template2/#organization",
-          "name": "Apex Venture",
-          "url": "https://cymatichub.xyz/template/template2",
-          "logo": "https://cymatichub.xyz/media/photo2.png",
-          "description": "Executive advisory and capital strategy firm assisting enterprises with structural scaling and venture capitalization."
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://cymatichub.xyz/template/template2/#website",
-          "name": "Apex Venture | Strategy & Capital Advisory",
-          "url": "https://cymatichub.xyz/template/template2",
-          "description": "Accelerating corporate enterprise growth through refined capital structuring and advisory competencies."
-        }
-      ]
-    }
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,39 +52,37 @@
 <body class="bg-apex-bg text-gray-100 antialiased font-sans flex flex-col min-h-screen">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-apex-bg/90 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
-            <div class="flex items-center justify-start overflow-hidden">
-                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 shrink-0">
-                    <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                        <i class="fa-solid fa-chart-line text-white text-sm"></i>
-                    </div>
-                    <span class="text-white font-extrabold text-lg tracking-wider hidden sm:block">APEX<span class="text-emerald-500">VENTURE</span></span>
-                </a>
-            </div>
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                    <i class="fa-solid fa-chart-line text-white text-sm"></i>
+                </div>
+                <span class="text-white font-extrabold text-lg tracking-wider">APEX<span class="text-emerald-500">VENTURE</span></span>
+            </a>
             
-            <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
-                <button onclick="navigateTo('home')" aria-label="Go to Home section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-home">Home</button>
-                <button onclick="navigateTo('services')" aria-label="Go to Services section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-services">Services</button>
-                <button onclick="navigateTo('cases')" aria-label="Go to Case Studies section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-cases">Case Studies</button>
-                <button onclick="navigateTo('contact')" aria-label="Go to Contact section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-contact">Contact</button>
+            <nav class="hidden md:flex items-center gap-8">
+                <button onclick="navigateTo('home')" class="nav-link text-apex-textMuted hover:text-white transition-colors text-sm font-semibold tracking-wide" id="nav-home">Home</button>
+                <button onclick="navigateTo('services')" class="nav-link text-apex-textMuted hover:text-white transition-colors text-sm font-semibold tracking-wide" id="nav-services">Services</button>
+                <button onclick="navigateTo('cases')" class="nav-link text-apex-textMuted hover:text-white transition-colors text-sm font-semibold tracking-wide" id="nav-cases">Case Studies</button>
+                <button onclick="navigateTo('contact')" class="nav-link text-apex-textMuted hover:text-white transition-colors text-sm font-semibold tracking-wide" id="nav-contact">Contact</button>
             </nav>
 
-            <div class="flex items-center justify-end gap-2 sm:gap-4">
-                <button onclick="navigateTo('contact')" aria-label="Partner With Us and Schedule Briefing" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-5 h-10 lg:h-11 text-xs lg:text-sm font-bold text-apex-bg bg-emerald-500 hover:bg-emerald-400 rounded-xl transition-all duration-300 shadow-lg shadow-emerald-500/20 whitespace-nowrap">
+            <div class="flex items-center gap-4">
+                <button onclick="navigateTo('contact')" class="hidden sm:inline-flex items-center justify-center px-5 h-11 text-sm font-bold text-apex-bg bg-emerald-500 hover:bg-emerald-400 rounded-xl transition-all duration-300 shadow-lg shadow-emerald-500/20">
                     Partner With Us
                 </button>
-                <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-300 focus:outline-none">
-                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-apex-card border-b border-white/5 px-6 py-6 space-y-4 shadow-2xl">
-            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Home</button>
-            <button onclick="navigateTo('services'); toggleMobileMenu();" aria-label="Go to Services" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Services</button>
-            <button onclick="navigateTo('cases'); toggleMobileMenu();" aria-label="Go to Case Studies" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Case Studies</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Contact" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Contact</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Partner with Apex Venture" class="w-full text-center py-3 text-base font-bold text-apex-bg bg-emerald-500 rounded-xl shadow-md">Partner With Us</button>
+            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Home</button>
+            <button onclick="navigateTo('services'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Services</button>
+            <button onclick="navigateTo('cases'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Case Studies</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Contact</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="w-full text-center py-3 text-base font-bold text-apex-bg bg-emerald-500 rounded-xl shadow-md">Partner With Us</button>
         </div>
     </header>
 
@@ -141,7 +115,7 @@
                         </div>
                         <div class="lg:col-span-5">
                             <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-apex-card p-2">
-                                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Corporate Briefing" class="w-full h-[400px] object-cover rounded-xl opacity-90">
+                                <img src="/media/image_four.jpg" onerror="this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80'" alt="Corporate Briefing" class="w-full h-[400px] object-cover rounded-xl opacity-90">
                             </div>
                         </div>
                     </div>
@@ -171,27 +145,27 @@
                     </div>
 
                     <div class="grid md:grid-cols-3 gap-8">
-                        <article class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
+                        <div class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
                             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
                                 <i class="fa-solid fa-chart-pie text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-3">Capital Structuring</h3>
                             <p class="text-apex-textMuted leading-relaxed">Evaluating corporate assets, allocating venture investments, and optimizing financial efficiency for scaling operations.</p>
-                        </article>
-                        <article class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
+                        </div>
+                        <div class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
                             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
                                 <i class="fa-solid fa-diagram-project text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-3">Operational Scale</h3>
                             <p class="text-apex-textMuted leading-relaxed">Streamlining corporate systems, reducing technical debt, and aligning decentralized departments under strong management playbooks.</p>
-                        </article>
-                        <article class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
+                        </div>
+                        <div class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
                             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
                                 <i class="fa-solid fa-globe text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-3">Market Entry Strategy</h3>
                             <p class="text-apex-textMuted leading-relaxed">Analyzing competitive landscapes, mapping out target segments, and launching data-driven expansion initiatives globally.</p>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -208,7 +182,7 @@
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="bg-apex-card rounded-2xl overflow-hidden border border-white/5">
                             <div class="h-64 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Financial Growth" class="w-full h-full object-cover">
+                                <img src="/media/image_five.jpg" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'" alt="Financial Growth" class="w-full h-full object-cover">
                             </div>
                             <div class="p-8 space-y-4">
                                 <div class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Fintech Expansion</div>
@@ -219,7 +193,7 @@
 
                         <div class="bg-apex-card rounded-2xl overflow-hidden border border-white/5">
                             <div class="h-64 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Enterprise Restructuring" class="w-full h-full object-cover">
+                                <img src="/media/image_six.jpg" onerror="this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80'" alt="Enterprise Restructuring" class="w-full h-full object-cover">
                             </div>
                             <div class="p-8 space-y-4">
                                 <div class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Agile Infrastructure</div>
@@ -348,11 +322,50 @@
     </footer>
 
     <script>
-        window.templateId = 'template2';
-    </script>
-    <script src="../shared/template-router.js"></script>
-    <script>
-        // Form Submission Logic
+        // Router state
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Navigation active states
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-emerald-400');
+                link.classList.add('text-apex-textMuted');
+            });
+            const activeLink = document.getElementById(`nav-${pageId}`);
+            if (activeLink) {
+                activeLink.classList.remove('text-apex-textMuted');
+                activeLink.classList.add('text-emerald-400');
+            }
+
+            // Scroll back to top on navigation
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark text-2xl text-white";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars text-2xl text-gray-300";
+            }
+        }
+
+        // Form Submission Logic (no alert windows, clean DOM injection)
         function handleFormSubmit(event) {
             event.preventDefault();
             const form = document.getElementById('contact-form');

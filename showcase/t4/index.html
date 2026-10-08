@@ -3,31 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hope Rise Foundation is a non-profit organization empowering communities through clean water systems, local classrooms, and medical assistance kits.">
-    <meta name="keywords" content="Hope Rise Foundation, Non Profit Organization, Community Empowerment, Clean Water Wells, Local Classrooms, Mobile Medical Clinics, Accountability First">
     <title>Hope Rise | Empowering Communities, Restoring Hope</title>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://cymatichub.xyz/template/template4/#organization",
-          "name": "Hope Rise Foundation",
-          "url": "https://cymatichub.xyz/template/template4",
-          "logo": "https://cymatichub.xyz/media/photo4.png",
-          "description": "Transparency-first non-profit organization deploying sustainable community-led projects."
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://cymatichub.xyz/template/template4/#website",
-          "name": "Hope Rise | Non-Profit Foundation",
-          "url": "https://cymatichub.xyz/template/template4",
-          "description": "Empowering global communities and restoring sustainable hope through clean water, learning, and clinic systems."
-        }
-      ]
-    }
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,42 +52,40 @@
 <body class="bg-hope-bg text-hope-charcoal antialiased font-sans flex flex-col min-h-screen">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-hope-bg/90 backdrop-blur-md border-b border-hope-softBg">
-        <div class="max-w-7xl mx-auto px-6 h-20 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
-            <div class="flex items-center justify-start overflow-hidden">
-                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 shrink-0">
-                    <div class="w-10 h-10 rounded-full bg-hope-forest flex items-center justify-center shadow-md">
-                        <i class="fa-solid fa-hands-holding-child text-white text-lg"></i>
-                    </div>
-                    <div class="flex flex-col hidden sm:flex">
-                        <span class="text-hope-forest font-serif font-bold text-lg leading-none tracking-tight">Hope Rise</span>
-                        <span class="text-hope-accent font-semibold text-[10px] tracking-widest uppercase">FOUNDATION</span>
-                    </div>
-                </a>
-            </div>
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-hope-forest flex items-center justify-center shadow-md">
+                    <i class="fa-solid fa-hands-holding-child text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-hope-forest font-serif font-bold text-lg leading-none tracking-tight">Hope Rise</span>
+                    <span class="text-hope-accent font-semibold text-[10px] tracking-widest uppercase">FOUNDATION</span>
+                </div>
+            </a>
             
-            <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
-                <button onclick="navigateTo('home')" aria-label="Go to Home section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-home">Home</button>
-                <button onclick="navigateTo('campaigns')" aria-label="Go to campaigns section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-campaigns">Campaigns</button>
-                <button onclick="navigateTo('story')" aria-label="Go to Our Story section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-story">Our Story</button>
-                <button onclick="navigateTo('contact')" aria-label="Go to Get Involved section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-contact">Involve</button>
+            <nav class="hidden md:flex items-center gap-8">
+                <button onclick="navigateTo('home')" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-sm font-semibold tracking-wide" id="nav-home">Home</button>
+                <button onclick="navigateTo('campaigns')" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-sm font-semibold tracking-wide" id="nav-campaigns">Campaigns</button>
+                <button onclick="navigateTo('story')" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-sm font-semibold tracking-wide" id="nav-story">Our Story</button>
+                <button onclick="navigateTo('contact')" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-sm font-semibold tracking-wide" id="nav-contact">Involve</button>
             </nav>
 
-            <div class="flex items-center justify-end gap-2 sm:gap-4">
-                <button onclick="navigateTo('contact')" aria-label="Make a Donation" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-6 h-10 lg:h-11 text-xs lg:text-sm font-bold text-white bg-hope-forest hover:bg-opacity-95 rounded-full transition-all duration-300 shadow-md whitespace-nowrap">
+            <div class="flex items-center gap-4">
+                <button onclick="navigateTo('contact')" class="hidden sm:inline-flex items-center justify-center px-6 h-11 text-sm font-bold text-white bg-hope-forest hover:bg-opacity-95 rounded-full transition-all duration-300 shadow-md">
                     Donate Now
                 </button>
-                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-hope-forest focus:outline-none">
-                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-hope-forest focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-hope-bg border-b border-hope-softBg px-6 py-6 space-y-4 shadow-lg">
-            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Home</button>
-            <button onclick="navigateTo('campaigns'); toggleMobileMenu();" aria-label="Go to Campaigns" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Campaigns</button>
-            <button onclick="navigateTo('story'); toggleMobileMenu();" aria-label="Go to Our Story" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Our Story</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Get Involved" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Involve</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Donate to Hope Rise" class="w-full text-center py-3 text-base font-bold text-white bg-hope-forest rounded-full shadow-md">Donate Now</button>
+            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Home</button>
+            <button onclick="navigateTo('campaigns'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Campaigns</button>
+            <button onclick="navigateTo('story'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Our Story</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Involve</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="w-full text-center py-3 text-base font-bold text-white bg-hope-forest rounded-full shadow-md">Donate Now</button>
         </div>
     </header>
 
@@ -142,7 +116,7 @@
                         </div>
                         <div class="lg:col-span-5">
                             <div class="relative rounded-[2rem] overflow-hidden shadow-xl border-8 border-white bg-white">
-                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Empowered Communities" class="w-full h-[400px] object-cover">
+                                <img src="/media/image_four.jpg" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'" alt="Empowered Communities" class="w-full h-[400px] object-cover">
                             </div>
                         </div>
                     </div>
@@ -156,27 +130,27 @@
                         <p class="text-hope-muted">We ensure 100% accountability on where every dollar reaches.</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-8">
-                        <article class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
+                        <div class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
                             <div class="w-12 h-12 rounded-full bg-hope-forest/10 flex items-center justify-center text-hope-forest mb-6">
                                 <i class="fa-solid fa-droplet text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-hope-forest mb-3">Clean Water Access</h3>
                             <p class="text-hope-muted">Building sustainable wells and clean-water processing kiosks inside remote settlements.</p>
-                        </article>
-                        <article class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
+                        </div>
+                        <div class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
                             <div class="w-12 h-12 rounded-full bg-hope-forest/10 flex items-center justify-center text-hope-forest mb-6">
                                 <i class="fa-solid fa-laptop-code text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-hope-forest mb-3">Localized Learning</h3>
                             <p class="text-hope-muted">Supplying communities with classrooms, offline resources, tablets, and mentorship modules.</p>
-                        </article>
-                        <article class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
+                        </div>
+                        <div class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
                             <div class="w-12 h-12 rounded-full bg-hope-forest/10 flex items-center justify-center text-hope-forest mb-6">
                                 <i class="fa-solid fa-heart-pulse text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-hope-forest mb-3">Medical Assistance</h3>
                             <p class="text-hope-muted">Deploying mobile clinical vans equipped with testing resources and direct pharmaceutical support.</p>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,7 +167,7 @@
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-hope-softBg">
                             <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80" alt="Well Construction" class="w-full h-full object-cover">
+                                <img src="/media/image_five.jpg" onerror="this.src='https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80'" alt="Well Construction" class="w-full h-full object-cover">
                                 <span class="absolute top-4 left-4 bg-hope-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Water</span>
                             </div>
                             <div class="p-8 space-y-6">
@@ -213,11 +187,11 @@
 
                         <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-hope-softBg">
                             <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80" alt="Education Kits" class="w-full h-full object-cover">
+                                <img src="/media/image_six.jpg" onerror="this.src='https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80'" alt="Education Kits" class="w-full h-full object-cover">
                                 <span class="absolute top-4 left-4 bg-hope-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Education</span>
                             </div>
                             <div class="p-8 space-y-6">
-                                <h3 class="text-2xl font-serif font-bold text-hope-forest">Scholastic Study Materials</h3>
+                                <h3 class="text-2xl font-serif font-bold text-hope-forest">Scholastic Hub Materials</h3>
                                 <p class="text-hope-muted">Procuring offline systems, curriculum books, and tools to upgrade school workspaces.</p>
                                 <div class="space-y-2">
                                     <div class="flex justify-between text-xs text-hope-muted font-bold">
@@ -251,7 +225,7 @@
                         </div>
                         <div class="relative">
                             <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Humanitarian Team" class="w-full h-full object-cover">
+                                <img src="/media/image_five.jpg" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'" alt="Humanitarian Team" class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
@@ -317,7 +291,7 @@
                                         <label class="block text-sm font-semibold text-hope-muted mb-2">Target Campaign Alignment</label>
                                         <select class="w-full bg-hope-bg px-4 py-3 rounded-xl border border-hope-softBg focus:outline-none focus:border-hope-forest">
                                             <option>Water Systems Project</option>
-                                            <option>Scholastic Study Materials</option>
+                                            <option>Scholastic Hub Materials</option>
                                             <option>General Fund</option>
                                         </select>
                                     </div>
@@ -379,10 +353,49 @@
     </footer>
 
     <script>
-        window.templateId = 'template4';
-    </script>
-    <script src="../shared/template-router.js"></script>
-    <script>
+        // Router state
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Navigation active states
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-hope-forest');
+                link.classList.add('text-hope-muted');
+            });
+            const activeLink = document.getElementById(`nav-${pageId}`);
+            if (activeLink) {
+                activeLink.classList.remove('text-hope-muted');
+                activeLink.classList.add('text-hope-forest');
+            }
+
+            // Scroll back to top on navigation
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark text-2xl text-hope-forest";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars text-2xl text-hope-forest";
+            }
+        }
+
         // Form Submission logic
         function handleFormSubmit(event) {
             event.preventDefault();

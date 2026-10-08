@@ -3,31 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aether Academy combines elite academic rigors with real-world exploration. Nurturing future leaders through certified STEM, Classics, and Humanities pathways.">
-    <meta name="keywords" content="Aether Academy, Private School, Elite Academy, Advanced STEM, Humanities, Prep School, University Placement, Leader Cultivation, Dr Evelyn Vance">
     <title>Aether Academy | Shaping Tomorrow's Leaders</title>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://cymatichub.xyz/template/template1/#organization",
-          "name": "Aether Academy",
-          "url": "https://cymatichub.xyz/template/template1",
-          "logo": "https://cymatichub.xyz/media/photo3.png",
-          "description": "Elite private prep academy combining top-tier STEM, Humanities, and leadership growth pipelines."
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://cymatichub.xyz/template/template1/#website",
-          "name": "Aether Academy | Elite Private Education",
-          "url": "https://cymatichub.xyz/template/template1",
-          "description": "Nurturing tomorrow's global leaders through robust educational pathways, high-fidelity labs, and customized curriculum structures."
-        }
-      ]
-    }
-    </script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -75,51 +51,49 @@
         }
     </style>
 </head>
-<body class="template-academy bg-academy-light text-academy-navy antialiased font-sans flex flex-col min-h-screen">
+<body class="bg-academy-light text-academy-navy antialiased font-sans flex flex-col min-h-screen">
 
     <!-- Global Navigation Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 h-20 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <div class="flex items-center justify-start overflow-hidden">
-                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 group shrink-0">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-academy-navy to-academy-slate flex items-center justify-center shadow-md">
-                        <span class="text-white font-serif font-bold text-xl">Æ</span>
-                    </div>
-                    <div class="flex flex-col hidden sm:flex">
-                        <span class="text-academy-navy font-extrabold text-lg tracking-wider leading-none">ÆTHER</span>
-                        <span class="text-academy-teal font-semibold text-xs tracking-widest uppercase">ACADEMY</span>
-                    </div>
-                </a>
-            </div>
+            <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-academy-navy to-academy-slate flex items-center justify-center shadow-md">
+                    <span class="text-white font-serif font-bold text-xl">Æ</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-academy-navy font-extrabold text-lg tracking-wider leading-none">ÆTHER</span>
+                    <span class="text-academy-teal font-semibold text-xs tracking-widest uppercase">ACADEMY</span>
+                </div>
+            </a>
             
             <!-- Desktop Dynamic Navigation Links -->
-            <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
-                <button onclick="navigateTo('home')" aria-label="Navigate to Home section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-home">Home</button>
-                <button onclick="navigateTo('programs')" aria-label="Navigate to Programs section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-programs">Programs</button>
-                <button onclick="navigateTo('origin')" aria-label="Navigate to Our Origin section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-origin">Our Origin</button>
-                <button onclick="navigateTo('contact')" aria-label="Navigate to Contact section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-contact">Contact</button>
+            <nav class="hidden md:flex items-center gap-8">
+                <button onclick="navigateTo('home')" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-sm font-semibold tracking-wide" id="nav-home">Home</button>
+                <button onclick="navigateTo('programs')" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-sm font-semibold tracking-wide" id="nav-programs">Programs</button>
+                <button onclick="navigateTo('origin')" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-sm font-semibold tracking-wide" id="nav-origin">Our Origin</button>
+                <button onclick="navigateTo('contact')" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-sm font-semibold tracking-wide" id="nav-contact">Contact</button>
             </nav>
 
             <!-- Call To Action Button -->
-            <div class="flex items-center justify-end gap-2 sm:gap-4">
-                <button onclick="navigateTo('contact')" aria-label="Apply Online Now" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-6 h-10 lg:h-11 text-xs lg:text-sm font-bold text-white bg-academy-navy hover:bg-academy-slate rounded-xl transition-all duration-300 shadow-lg shadow-academy-navy/20 whitespace-nowrap">
+            <div class="flex items-center gap-4">
+                <button onclick="navigateTo('contact')" class="hidden sm:inline-flex items-center justify-center px-6 h-11 text-sm font-bold text-white bg-academy-navy hover:bg-academy-slate rounded-xl transition-all duration-300 shadow-lg shadow-academy-navy/20">
                     Apply Now
                 </button>
                 <!-- Mobile Navigation Button -->
-                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-academy-navy focus:outline-none">
-                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-academy-navy focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Dynamic Navigation Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-6 space-y-4 shadow-lg">
-            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Home</button>
-            <button onclick="navigateTo('programs'); toggleMobileMenu();" aria-label="Go to Programs" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Programs</button>
-            <button onclick="navigateTo('origin'); toggleMobileMenu();" aria-label="Go to Our Origin" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Our Origin</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Contact" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Contact</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Submit Online Application" class="w-full text-center py-3 text-base font-bold text-white bg-academy-teal rounded-xl shadow-md">Apply Now</button>
+            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Home</button>
+            <button onclick="navigateTo('programs'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Programs</button>
+            <button onclick="navigateTo('origin'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Our Origin</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Contact</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="w-full text-center py-3 text-base font-bold text-white bg-academy-teal rounded-xl shadow-md">Apply Now</button>
         </div>
     </header>
 
@@ -153,7 +127,7 @@
                         </div>
                         <div class="lg:col-span-5">
                             <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-                                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="Academy Campus" class="w-full h-[400px] object-cover">
+                                <img src="/media/image_four.jpg" onerror="this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80'" alt="Academy Campus" class="w-full h-[400px] object-cover">
                             </div>
                         </div>
                     </div>
@@ -190,27 +164,27 @@
                         <p class="text-gray-500">We nurture intellectual curiosity alongside deep individual character development.</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-8">
-                        <article class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
+                        <div class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
                             <div class="w-12 h-12 rounded-xl bg-academy-teal/10 flex items-center justify-center text-academy-teal mb-6">
                                 <i class="fa-solid fa-graduation-cap text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold mb-3">Academic Eminence</h3>
                             <p class="text-gray-600">A rigorous, globally-recognized curriculum taught by certified instructors who are experts in their fields.</p>
-                        </article>
-                        <article class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
+                        </div>
+                        <div class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
                             <div class="w-12 h-12 rounded-xl bg-academy-teal/10 flex items-center justify-center text-academy-teal mb-6">
                                 <i class="fa-solid fa-brain text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold mb-3">Holistic Growth</h3>
                             <p class="text-gray-600">Integrating emotional intelligence, collaborative communication, and artistic pursuits into weekly life.</p>
-                        </article>
-                        <article class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
+                        </div>
+                        <div class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
                             <div class="w-12 h-12 rounded-xl bg-academy-teal/10 flex items-center justify-center text-academy-teal mb-6">
                                 <i class="fa-solid fa-earth-americas text-xl"></i>
                             </div>
                             <h3 class="text-xl font-bold mb-3">Global Stewardship</h3>
                             <p class="text-gray-600">Active engagement in community projects, international excursions, and global policy competitions.</p>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -230,7 +204,7 @@
                         <!-- Card 1 -->
                         <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
                             <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1507537290456-4f899c5c4f1a?auto=format&fit=crop&w=800&q=80" alt="STEM" class="w-full h-full object-cover">
+                                <img src="/media/image_five.jpg" onerror="this.src='https://images.unsplash.com/photo-1507537290456-4f899c5c4f1a?auto=format&fit=crop&w=800&q=80'" alt="STEM" class="w-full h-full object-cover">
                                 <span class="absolute top-4 left-4 bg-academy-navy text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">Grades 9-12</span>
                             </div>
                             <div class="p-8 space-y-4">
@@ -246,7 +220,7 @@
                         <!-- Card 2 -->
                         <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
                             <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80" alt="Humanities" class="w-full h-full object-cover">
+                                <img src="/media/image_six.jpg" onerror="this.src='https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80'" alt="Humanities" class="w-full h-full object-cover">
                                 <span class="absolute top-4 left-4 bg-academy-navy text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">Grades 9-12</span>
                             </div>
                             <div class="p-8 space-y-4">
@@ -291,7 +265,7 @@
                         </div>
                         <div class="relative">
                             <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80" alt="Campus Library" class="w-full h-full object-cover">
+                                <img src="/media/image_five.jpg" onerror="this.src='https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80'" alt="Campus Library" class="w-full h-full object-cover">
                             </div>
                             <div class="absolute -bottom-6 -left-6 bg-academy-navy text-white p-6 rounded-2xl shadow-xl max-w-xs">
                                 <p class="text-sm italic">"Education is not the filling of a bucket, but the lighting of a fire."</p>
@@ -433,11 +407,51 @@
         </div>
     </footer>
 
+    <!-- Core Navigation Routing & State Controller -->
     <script>
-        window.templateId = 'template1';
-    </script>
-    <script src="../shared/template-router.js"></script>
-    <script>
+        // Router state
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Navigation active states
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-academy-teal');
+                link.classList.add('text-academy-navy/80');
+            });
+            const activeLink = document.getElementById(`nav-${pageId}`);
+            if (activeLink) {
+                activeLink.classList.remove('text-academy-navy/80');
+                activeLink.classList.add('text-academy-teal');
+            }
+
+            // Scroll back to top on navigation
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark text-2xl";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars text-2xl";
+            }
+        }
+
         // Custom Form Submission Response (No real alerts!)
         function handleFormSubmit(event) {
             event.preventDefault();

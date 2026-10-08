@@ -1,5 +1,11 @@
-User-agent: *
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: Claude-Web
+User-agent: Google-Extended
 Allow: /
-
-# Sitemap
+Disallow: /api/
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /legal/
 Sitemap: https://cymatichub.xyz/sitemap.xml

@@ -3,31 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sora Studio is a minimalist creative practice specializing in visual brand design, architectural identity, and spatial-digital direction.">
-    <meta name="keywords" content="Sora Studio, Creative Direction, Brand Design, Minimalist Design, Spatial Identity, Brand System, Typographic Design">
     <title>Sora Studio | Minimalist Creative Direction</title>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://cymatichub.xyz/template/template3/#organization",
-          "name": "Sora Studio",
-          "url": "https://cymatichub.xyz/template/template3",
-          "logo": "https://cymatichub.xyz/media/photo1.png",
-          "description": "Minimalist creative practice dedicated to spatial planning, typographic systems, and architectural brand identity."
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://cymatichub.xyz/template/template3/#website",
-          "name": "Sora Studio | Minimalist Creative Practice",
-          "url": "https://cymatichub.xyz/template/template3",
-          "description": "Crafting beautiful spaces, digital silence, and high-fidelity layouts for thoughtful, modern brands."
-        }
-      ]
-    }
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,36 +48,34 @@
 <body class="bg-sora-bg text-sora-dark antialiased font-sans flex flex-col min-h-screen">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-sora-bg/85 backdrop-blur-md border-b border-sora-gray">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 h-24 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
-            <div class="flex items-center justify-start overflow-hidden">
-                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-2 group shrink-0">
-                    <span class="font-display font-bold text-2xl tracking-tight text-sora-dark">SORA<span class="font-normal text-sora-muted">.</span></span>
-                </a>
-            </div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
+            <a href="#" onclick="navigateTo('home')" class="flex items-center gap-2 group">
+                <span class="font-display font-bold text-2xl tracking-tight text-sora-dark">SORA<span class="font-normal text-sora-muted">.</span></span>
+            </a>
             
-            <nav class="hidden md:flex items-center justify-center gap-8 lg:gap-12">
-                <button onclick="navigateTo('home')" aria-label="Navigate to Home" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-home">Home</button>
-                <button onclick="navigateTo('work')" aria-label="Navigate to Works" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-work">Work</button>
-                <button onclick="navigateTo('manifesto')" aria-label="Navigate to Manifesto" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-manifesto">Manifesto</button>
-                <button onclick="navigateTo('contact')" aria-label="Navigate to Contact" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-contact">Contact</button>
+            <nav class="hidden md:flex items-center gap-12">
+                <button onclick="navigateTo('home')" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest" id="nav-home">Home</button>
+                <button onclick="navigateTo('work')" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest" id="nav-work">Work</button>
+                <button onclick="navigateTo('manifesto')" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest" id="nav-manifesto">Manifesto</button>
+                <button onclick="navigateTo('contact')" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest" id="nav-contact">Contact</button>
             </nav>
 
-            <div class="flex items-center justify-end gap-2 sm:gap-4">
-                <button onclick="navigateTo('contact')" aria-label="Start Project with Sora Studio" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-6 py-2.5 text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white bg-sora-dark hover:bg-sora-muted transition-all duration-300 rounded-none whitespace-nowrap">
+            <div class="flex items-center gap-4">
+                <button onclick="navigateTo('contact')" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white bg-sora-dark hover:bg-sora-muted transition-all duration-300 rounded-none">
                     Start Project
                 </button>
-                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-sora-dark focus:outline-none">
+                <button onclick="toggleMobileMenu()" class="md:hidden text-sora-dark focus:outline-none">
                     <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-sora-bg border-b border-sora-gray px-6 py-8 space-y-6 shadow-xl">
-            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Home</button>
-            <button onclick="navigateTo('work'); toggleMobileMenu();" aria-label="Go to Work" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Work</button>
-            <button onclick="navigateTo('manifesto'); toggleMobileMenu();" aria-label="Go to Manifesto" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Manifesto</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Contact" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Contact</button>
-            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Start New Project" class="w-full text-center py-4 text-xs font-bold uppercase tracking-widest text-white bg-sora-dark rounded-none">Start Project</button>
+            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Home</button>
+            <button onclick="navigateTo('work'); toggleMobileMenu();" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Work</button>
+            <button onclick="navigateTo('manifesto'); toggleMobileMenu();" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Manifesto</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Contact</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" class="w-full text-center py-4 text-xs font-bold uppercase tracking-widest text-white bg-sora-dark rounded-none">Start Project</button>
         </div>
     </header>
 
@@ -132,7 +106,7 @@
 
             <div class="px-6 md:px-12 max-w-7xl mx-auto pb-24">
                 <div class="h-[450px] md:h-[600px] w-full overflow-hidden border border-sora-gray">
-                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" alt="Minimalist Space Study" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out">
+                    <img src="/media/image_four.jpg" onerror="this.src='https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80'" alt="Minimalist Space Study" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out">
                 </div>
             </div>
         </section>
@@ -145,25 +119,25 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
-                    <article class="space-y-4 hover-img-zoom cursor-pointer" onclick="navigateTo('contact')">
+                    <div class="space-y-4 hover-img-zoom cursor-pointer" onclick="navigateTo('contact')">
                         <div class="aspect-[4/3] w-full overflow-hidden border border-sora-gray">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Architectural Framing" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 ease-out">
+                            <img src="/media/image_five.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" alt="Architectural Framing" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 ease-out">
                         </div>
                         <div class="flex justify-between items-baseline pt-2">
                             <h3 class="text-xl font-display font-bold text-sora-dark">I. Frame & Void Study</h3>
                             <span class="text-xs text-sora-muted uppercase tracking-widest">Aesthetic Direction</span>
                         </div>
-                    </article>
+                    </div>
 
-                    <article class="space-y-4 hover-img-zoom cursor-pointer" onclick="navigateTo('contact')">
+                    <div class="space-y-4 hover-img-zoom cursor-pointer" onclick="navigateTo('contact')">
                         <div class="aspect-[4/3] w-full overflow-hidden border border-sora-gray">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Branding Layout" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 ease-out">
+                            <img src="/media/image_six.jpg" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'" alt="Branding Layout" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 ease-out">
                         </div>
                         <div class="flex justify-between items-baseline pt-2">
                             <h3 class="text-xl font-display font-bold text-sora-dark">II. Brutalist Structures</h3>
                             <span class="text-xs text-sora-muted uppercase tracking-widest">Brand System</span>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -254,10 +228,49 @@
     </footer>
 
     <script>
-        window.templateId = 'template3';
-    </script>
-    <script src="../shared/template-router.js"></script>
-    <script>
+        // Router state
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Navigation active states
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-sora-dark');
+                link.classList.add('text-sora-muted');
+            });
+            const activeLink = document.getElementById(`nav-${pageId}`);
+            if (activeLink) {
+                activeLink.classList.remove('text-sora-muted');
+                activeLink.classList.add('text-sora-dark');
+            }
+
+            // Scroll back to top on navigation
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark text-xl text-sora-dark";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars text-xl text-sora-dark";
+            }
+        }
+
         // Clean inquiry trigger
         function handleFormSubmit(event) {
             event.preventDefault();

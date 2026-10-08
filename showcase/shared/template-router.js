@@ -38,16 +38,25 @@
 
     // Export to global scope
     window.navigateTo = function(pageId) {
+        // Resolve absolute path for reporting
+        const absolutePath = (pageId.startsWith('/') || pageId.startsWith('http')) ? pageId : '/' + pageId;
+
         // Report to parent for unified state management and analytics
         if (window.parent !== window) {
             window.parent.postMessage({
                 type: 'NAVIGATE_TO',
-                pageId: pageId,
+                pageId: absolutePath, // Use absolute path here
                 templateId: window.templateId || 'unknown'
             }, '*');
         }
         
-        // Apply locally (the parent might also broadcast back, but we apply immediately for responsiveness)
+        // If pageId looks like a full URL, navigate there
+        if (pageId.startsWith('http')) {
+            window.location.href = pageId;
+            return;
+        }
+
+        // Apply locally
         applyNavigation(pageId);
     };
 
