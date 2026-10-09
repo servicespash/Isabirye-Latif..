@@ -1,4 +1,4 @@
-import{a as n}from"./rolldown-runtime-DS2seoW7.js";import{An as l,Dn as o,Dt as c,F as i,H as d,K as x,Yt as p,Zt as m,dt as u,vn as b,wt as a}from"./vendor-CmQyz53N.js";import{t as h}from"./CymaticLayout-DCHzLsZF.js";import{t as g}from"./readingTime-Cn98J0xi.js";import{t as f}from"./SubdomainSeoAuditor-CDNUZEwZ.js";var y=n(l(),1),e=b(),k=()=>{const[t,s]=(0,y.useState)(null),r=g(`
+import{a as n}from"./rolldown-runtime-DS2seoW7.js";import{An as l,Dn as o,Dt as c,F as i,H as d,K as x,Yt as p,Zt as m,dt as u,vn as b,wt as a}from"./vendor-CmQyz53N.js";import{t as h}from"./CymaticLayout-9WnfMDz3.js";import{t as g}from"./readingTime-Cn98J0xi.js";import{t as f}from"./SubdomainSeoAuditor-CDNUZEwZ.js";var y=n(l(),1),e=b(),k=()=>{const[t,s]=(0,y.useState)(null),r=g(`
     The dual powerhouse driving our entire digital presence. This dedicated hub enables you to inspect, 
     launch, and live-audit both core operations platforms: Cymatic Study (education compliance) 
     and Cymatic Resonance (operational telemetry).
