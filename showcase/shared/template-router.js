@@ -41,13 +41,18 @@
         // Resolve absolute path for reporting
         const absolutePath = (pageId.startsWith('/') || pageId.startsWith('http')) ? pageId : '/' + pageId;
 
-        // Report to parent for unified state management and analytics
+        // Update URL hash for deep linking
+        if (!pageId.startsWith('http')) {
+            window.location.hash = pageId;
+        }
+
+        // Report to parent for unified state management and analytics (secure target origin)
         if (window.parent !== window) {
             window.parent.postMessage({
                 type: 'NAVIGATE_TO',
-                pageId: absolutePath, // Use absolute path here
+                pageId: absolutePath,
                 templateId: window.templateId || 'unknown'
-            }, '*');
+            }, window.location.origin || '*');
         }
         
         // If pageId looks like a full URL, navigate there
@@ -62,8 +67,17 @@
 
     // Listen for messages from parent (for unified state sync)
     window.addEventListener('message', function(event) {
+        // Optional origin validation if needed, fallback to allow trusted parent
         if (event.data && event.data.type === 'SYNC_NAVIGATION') {
             applyNavigation(event.data.pageId);
+        }
+    });
+
+    // Handle initial load from URL hash
+    window.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash) {
+            const initialPage = window.location.hash.substring(1);
+            applyNavigation(initialPage);
         }
     });
 
