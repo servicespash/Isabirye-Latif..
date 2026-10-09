@@ -33,13 +33,16 @@ interface TemplateDef {
 const templates: TemplateDef[] = templatesData;
 
 const getDeviceStyles = (currentDevice: DeviceType) => {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return 'w-full h-full';
+  }
   switch (currentDevice) {
     case 'desktop':
       return 'w-full h-full';
     case 'tablet':
-      return 'w-full max-w-[768px] h-[90vh] max-h-[900px] rounded-2xl border-4 sm:border-8 border-gray-800 shadow-2xl';
+      return 'w-[768px] h-[90vh] max-h-[900px] rounded-3xl border-8 border-gray-800 shadow-2xl';
     case 'mobile':
-      return 'w-full max-w-[375px] h-[80vh] max-h-[750px] rounded-2xl border-4 sm:border-8 border-gray-800 shadow-2xl';
+      return 'w-[375px] h-[80vh] max-h-[750px] rounded-3xl border-8 border-gray-800 shadow-2xl';
     default:
       return 'w-full h-full';
   }
@@ -138,9 +141,9 @@ export const TemplateBrowser: React.FC = () => {
             ))}
           </div>
 
-          {/* Device Responsive Simulators */}
+          {/* Device Responsive Simulators (Desktop only) */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 bg-[#171E30] p-1 rounded-full border border-gray-800">
+            <div className="hidden md:flex items-center gap-1 bg-[#171E30] p-1 rounded-full border border-gray-800">
               <button
                 onClick={() => setCurrentDevice('desktop')}
                 className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${

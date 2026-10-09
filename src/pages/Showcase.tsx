@@ -30,13 +30,16 @@ const categories = ['All', ...Array.from(new Set(templates.map(t => t.category))
 const PHASES = ['Research', 'Planning', 'Design', 'Deployed'];
 
 const getDeviceStyles = (currentDevice: DeviceType) => {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return 'w-full h-full';
+  }
   switch (currentDevice) {
     case 'desktop':
       return 'w-full h-full';
     case 'tablet':
-      return 'w-full max-w-[768px] h-[85vh] rounded-2xl border-4 sm:border-8 border-gray-800 shadow-2xl';
+      return 'w-[768px] h-[1024px] rounded-3xl border-8 border-gray-800 shadow-2xl';
     case 'mobile':
-      return 'w-full max-w-[375px] h-[80vh] rounded-2xl border-4 sm:border-8 border-gray-800 shadow-2xl';
+      return 'w-[375px] h-[812px] rounded-3xl border-8 border-gray-800 shadow-2xl';
     default:
       return 'w-full h-full';
   }
@@ -88,9 +91,9 @@ const SimulatorModal: React.FC<SimulatorModalProps> = ({ activeTemplateId, setAc
           ))}
         </div>
 
-        {/* Device Responsive Simulators */}
+        {/* Device Responsive Simulators (Desktop only) */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-[#171E30] p-1.5 rounded-xl border border-gray-800 shrink-0">
+          <div className="hidden md:flex items-center gap-1.5 bg-[#171E30] p-1.5 rounded-xl border border-gray-800 shrink-0">
             <button
               onClick={() => setCurrentDevice('desktop')}
               className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all ${
