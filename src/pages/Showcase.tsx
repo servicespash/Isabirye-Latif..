@@ -34,9 +34,9 @@ const getDeviceStyles = (currentDevice: DeviceType) => {
     case 'desktop':
       return 'w-full h-full';
     case 'tablet':
-      return 'w-[768px] h-[1024px] rounded-3xl border-8 border-gray-800 shadow-2xl';
+      return 'w-full max-w-[768px] h-[85vh] rounded-2xl border-4 sm:border-8 border-gray-800 shadow-2xl';
     case 'mobile':
-      return 'w-[375px] h-[812px] rounded-3xl border-8 border-gray-800 shadow-2xl';
+      return 'w-full max-w-[375px] h-[80vh] rounded-2xl border-4 sm:border-8 border-gray-800 shadow-2xl';
     default:
       return 'w-full h-full';
   }
@@ -131,9 +131,10 @@ const SimulatorModal: React.FC<SimulatorModalProps> = ({ activeTemplateId, setAc
           
           <button 
             onClick={() => setActiveTemplateId(null)}
-            className="ml-2 w-10 h-10 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all"
+            className="ml-2 px-3 py-2 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white flex items-center gap-1.5 transition-all text-xs font-bold uppercase tracking-wider"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
+            <span className="hidden sm:inline">Exit</span>
           </button>
         </div>
       </header>
