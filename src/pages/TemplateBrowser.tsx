@@ -37,9 +37,9 @@ const getDeviceStyles = (currentDevice: DeviceType) => {
     case 'desktop':
       return 'w-full h-full';
     case 'tablet':
-      return 'w-[768px] h-[1024px] rounded-3xl border-8 border-gray-800 shadow-2xl';
+      return 'w-[768px] h-[90vh] max-h-[900px] rounded-3xl border-8 border-gray-800 shadow-2xl';
     case 'mobile':
-      return 'w-[375px] h-[812px] rounded-3xl border-8 border-gray-800 shadow-2xl';
+      return 'w-[375px] h-[80vh] max-h-[750px] rounded-3xl border-8 border-gray-800 shadow-2xl';
     default:
       return 'w-full h-full';
   }

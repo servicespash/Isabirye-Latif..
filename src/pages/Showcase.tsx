@@ -201,6 +201,8 @@ export const Showcase: React.FC = () => {
     logPageView('showcase');
   }, [logPageView]);
 
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
   const toggleFavorite = (id: string) => {
     const newFavorites = favorites.includes(id) 
       ? favorites.filter(fav => fav !== id) 
@@ -212,7 +214,8 @@ export const Showcase: React.FC = () => {
   const copyLink = (id: string) => {
     const url = `${window.location.origin}/showcase/${id}`;
     navigator.clipboard.writeText(url);
-    alert('Link copied to clipboard!');
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
   };
 
   const filteredTemplates = templates.filter(t => {
@@ -352,10 +355,15 @@ export const Showcase: React.FC = () => {
                       </button>
                       <button 
                         onClick={() => copyLink(template.id)}
-                        className="p-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-all"
+                        className="p-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-all relative"
                         title="Copy Share Link"
                       >
                          <Copy className="w-5 h-5" />
+                         {copiedId === template.id && (
+                           <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-black text-[9px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap">
+                             Copied!
+                           </span>
+                         )}
                       </button>
                   </div>
                 </div>
